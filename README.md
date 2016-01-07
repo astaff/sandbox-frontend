@@ -33,6 +33,13 @@
 
 =======
 
+* Install Compass
 * SASS routes can be found and edited in config.rb
+
+		cd /YOURDIRECTORY
+		compass watch
+		OR
+		compass compile
+
 
 
