@@ -1,0 +1,106 @@
+@import "util";
+header {
+    width: 100%;
+    background-color: $primary-blue;
+    box-shadow: inset 0 5px 2px rgba($primary-black, 0.5);
+    color: #FFF;
+    .wrapper {
+        @include grid-row();
+        margin: 0;
+    }
+    .file,
+    .status,
+    .home,
+    .tabs {
+        height: $basesize*2;
+        margin: $baseline/2 0;
+        line-height: $basesize*2;
+        @include grid-col(6);
+        span {
+            vertical-align: middle;
+        }
+        label {
+            width: 200px;
+        }
+        p {
+            padding-top: $basesize*0.5;
+        }
+    }
+}
+
+.status,
+.tabs {
+    text-align: right;
+}
+
+header.submenu {
+    background-color: lighten($primary-blue, 50%);
+    box-shadow: inset 0 5px 5px rgba($primary-blue, 0.3);
+    margin-bottom: $baseline;
+    p {
+        color: $primary-blue;
+    }
+}
+
+nav ul {
+    display: block;
+    margin-bottom: 0;
+    li {
+        @include grid-col(1);
+        display: inline-block;
+        line-height: $baseline*3;
+        margin-bottom: 0;
+        color: $primary-black;
+        text-align: center;
+    }
+    a {
+        display: inline-block;
+        font-family: $stack-sans;
+        color: #FFF;
+        margin-bottom: 0;
+        text-align: center;
+        font-size: $basesize;
+        line-height: $baseline*3;
+        &:hover {
+            text-shadow: 1px 1px 4px #333;
+        }
+        
+    }
+}
+
+a.btn {
+    color: #FFF;
+    text-decoration: none;
+    border: none;
+    vertical-align: middle;
+    text-align: center;
+    font-size: $basesize;
+    background-color: lighten($primary-blue, 15%);
+    padding: $basesize*0.5 $basesize;
+    border-radius: $basesize;
+    -webkit-transition: background-color 1s;
+    /* Safari */
+    transition: background-color 1s;
+    width: $basesize*6;
+    &:hover {
+        background-color: lighten($primary-blue, 30%);
+        text-decoration: none;
+    }
+}
+
+a.btn-tab {
+    color: $primary-blue;
+    text-decoration: none;
+    border: none;
+    vertical-align: middle;
+    text-align: center;
+    font-size: $basesize;
+    background-color: white;
+    padding: $basesize*0.5 $basesize $basesize*1.5 $basesize;
+    -webkit-transition: background-color 1s;
+    /* Safari */
+    transition: box-shadow 0.1s;
+    &:hover {
+        box-shadow: 2px -2px 2px rgba($primary-blue, 0.2);
+    }
+}

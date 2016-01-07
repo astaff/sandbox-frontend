@@ -1,0 +1,32 @@
+@font-face {
+	font-family: 'tronicon';
+	src:url('../fonts/tronicons.eot?17nqcd');
+	src:url('../fonts/tronicons.eot?17nqcd#iefix') format('embedded-opentype'),
+		url('../fonts/tronicons.ttf?17nqcd') format('truetype'),
+		url('../fonts/tronicons.woff?17nqcd') format('woff'),
+		url('../fonts/tronicons.svg?17nqcd#tronicons') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+	font-family: 'tronicon' !important;
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: $baseline;
+
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-tron-logo:before {
+	content: "\e900";
+	vertical-align: middle;
+}
+

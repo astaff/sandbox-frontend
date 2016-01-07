@@ -1,0 +1,248 @@
+/* Typography */
+/* Color Scheme */
+/* Responsive Breakpoints */
+/* Typography */
+/* Color Scheme */
+/* Responsive Breakpoints */
+@font-face {
+  font-family: "trons";
+  src: url("../fonts/Geogtq-Rg-webfont.woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+/* line 10, ../../sass/util/typography.scss */
+body {
+  font-size: 14px;
+  font-family: "trons" , sans-serif;
+  margin: 0;
+  color: #2b345b;
+}
+
+/* line 17, ../../sass/util/typography.scss */
+h1 {
+  margin-top: 0;
+  font-size: 35px;
+  font-weight: 100;
+  line-height: 44px;
+  margin-bottom: 22px;
+}
+
+/* line 25, ../../sass/util/typography.scss */
+h2 {
+  font-weight: 100;
+  font-size: 28px;
+  margin-bottom: 22px;
+  line-height: 44px;
+}
+
+/* line 31, ../../sass/util/typography.scss */
+h3 {
+  font-weight: 100;
+  font-size: 21px;
+  margin-bottom: 22px;
+  line-height: 33px;
+}
+
+/* line 38, ../../sass/util/typography.scss */
+p, li, blockquote, pre {
+  font-family: "trons";
+  font-size: 14px;
+  line-height: 22px;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 22px;
+}
+
+/* line 47, ../../sass/util/typography.scss */
+p {
+  margin-top: 0;
+  margin-bottom: 22px;
+  line-height: 22px;
+}
+
+/* line 53, ../../sass/util/typography.scss */
+a {
+  text-decoration: none;
+  color: #eaebef;
+}
+
+/* line 60, ../../sass/util/typography.scss */
+ol {
+  padding-left: 1.5em;
+  list-style-type: decimal;
+}
+
+/* Typography */
+/* Color Scheme */
+/* Responsive Breakpoints */
+@font-face {
+  font-family: 'tronicon';
+  src: url("../fonts/tronicons.eot?17nqcd");
+  src: url("../fonts/tronicons.eot?17nqcd#iefix") format("embedded-opentype"), url("../fonts/tronicons.ttf?17nqcd") format("truetype"), url("../fonts/tronicons.woff?17nqcd") format("woff"), url("../fonts/tronicons.svg?17nqcd#tronicons") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+/* line 12, ../../sass/util/tronicon.scss */
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'tronicon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 22px;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* line 28, ../../sass/util/tronicon.scss */
+.icon-tron-logo:before {
+  content: "\e900";
+  vertical-align: middle;
+}
+
+/* line 2, ../../sass/main.scss */
+header {
+  width: 100%;
+  background-color: #2b345b;
+  box-shadow: inset 0 5px 2px rgba(41, 30, 38, 0.5);
+  color: #FFF;
+}
+/* line 7, ../../sass/main.scss */
+header .wrapper {
+  display: block;
+  overflow: hidden;
+  margin: auto;
+  width: 95%;
+  padding: 0% 2.5%;
+  margin-bottom: 22px;
+  margin: 0;
+}
+/* line 11, ../../sass/main.scss */
+header .file,
+header .status,
+header .home,
+header .tabs {
+  height: 28px;
+  margin: 11px 0;
+  line-height: 28px;
+  width: 47.91667%;
+  float: left;
+  padding-left: 1.04167%;
+  padding-right: 1.04167%;
+  display: block;
+}
+/* line 19, ../../sass/main.scss */
+header .file span,
+header .status span,
+header .home span,
+header .tabs span {
+  vertical-align: middle;
+}
+/* line 22, ../../sass/main.scss */
+header .file label,
+header .status label,
+header .home label,
+header .tabs label {
+  width: 200px;
+}
+/* line 25, ../../sass/main.scss */
+header .file p,
+header .status p,
+header .home p,
+header .tabs p {
+  padding-top: 7px;
+}
+
+/* line 31, ../../sass/main.scss */
+.status,
+.tabs {
+  text-align: right;
+}
+
+/* line 36, ../../sass/main.scss */
+header.submenu {
+  background-color: #adb5d8;
+  box-shadow: inset 0 5px 5px rgba(43, 52, 91, 0.3);
+  margin-bottom: 22px;
+}
+/* line 40, ../../sass/main.scss */
+header.submenu p {
+  color: #2b345b;
+}
+
+/* line 45, ../../sass/main.scss */
+nav ul {
+  display: block;
+  margin-bottom: 0;
+}
+/* line 48, ../../sass/main.scss */
+nav ul li {
+  width: 6.25%;
+  float: left;
+  padding-left: 1.04167%;
+  padding-right: 1.04167%;
+  display: block;
+  display: inline-block;
+  line-height: 66px;
+  margin-bottom: 0;
+  color: #291e26;
+  text-align: center;
+}
+/* line 56, ../../sass/main.scss */
+nav ul a {
+  display: inline-block;
+  font-family: "trons";
+  color: #FFF;
+  margin-bottom: 0;
+  text-align: center;
+  font-size: 14px;
+  line-height: 66px;
+}
+/* line 64, ../../sass/main.scss */
+nav ul a:hover {
+  text-shadow: 1px 1px 4px #333;
+}
+
+/* line 71, ../../sass/main.scss */
+a.btn {
+  color: #FFF;
+  text-decoration: none;
+  border: none;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 14px;
+  background-color: #44528f;
+  padding: 7px 14px;
+  border-radius: 14px;
+  -webkit-transition: background-color 1s;
+  /* Safari */
+  transition: background-color 1s;
+  width: 84px;
+}
+/* line 85, ../../sass/main.scss */
+a.btn:hover {
+  background-color: #6877b7;
+  text-decoration: none;
+}
+
+/* line 91, ../../sass/main.scss */
+a.btn-tab {
+  color: #2b345b;
+  text-decoration: none;
+  border: none;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 14px;
+  background-color: white;
+  padding: 7px 14px 21px 14px;
+  -webkit-transition: background-color 1s;
+  /* Safari */
+  transition: box-shadow 0.1s;
+}
+/* line 103, ../../sass/main.scss */
+a.btn-tab:hover {
+  box-shadow: 2px -2px 2px rgba(43, 52, 91, 0.2);
+}

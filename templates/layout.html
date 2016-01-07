@@ -1,0 +1,48 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome/font-awesome.css') }}"> {% block styles %} {% endblock %}
+</head>
+
+<body>
+    <header>
+        <div class="wrapper">
+            <section class="file">
+                <i class="icon-tron-logo fa-lg" style="margin-right:24px;"></i>
+                <a href="#" class="btn"><i class="fa fa-upload" ></i><span style="vertical-align:middle;"> Load</span></a>
+                <a href="#" class="btn"><i class="fa fa-play-circle" ></i><span style="vertical-align:middle;"> Run</span></a>
+                <a href="#" class="btn"><i class="fa fa-save" ></i><span style="vertical-align:middle;"> Save</span></a>
+                <a href="#" class="btn"><i class="fa fa-download" ></i><span style="vertical-align:middle;"> Save</span></a>
+            </section>
+            <section class="status">
+                <p>Robot is Moving...</p>
+            </section>
+        </div>
+    </header>
+    <header class="submenu">
+        <div class="wrapper">
+            <section class="home">
+                <p>Home:
+                    <a href="#" class="btn">ALL</a>
+                    <a href="#" class="btn">X</a>
+                    <a href="#" class="btn">Y</a>
+                    <a href="#" class="btn">Z</a>
+                    <a href="#" class="btn">A</a>
+                    <a href="#" class="btn">B</a>
+                </p>
+            </section>
+            <section class="tabs">
+                <a href="#" class="btn-tab">Deck</a>
+                <a href="#" class="btn-tab">Pipette</a>
+                <a href="#" class="btn-tab">Labware</a>
+                <a href="#" class="btn-tab">Config</a>
+            </section>
+        </div>
+    </header>
+ 
+    {% block body %}{% endblock %}
+
+</body>
+
+</html>

@@ -1,0 +1,101 @@
+{% extends "/layout.html" %} {% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/deck.css') }}"> {% endblock %} {% block body %}
+<!--------------------------------
+REMOVED LABWARE DROPDOWN 
+<section class="options">
+
+<aside>
+        <select>
+            <option value="#">Labware</option>
+            <option value="#">96 Wellplate</option>
+            <option value="#">p200 triprack</option>
+            <option value="#">trash</option>
+        </select>
+    </aside>
+
+    <div class="btn-group">
+        <a href="#" class="btn-p">p200 Single Left</a>
+        <a href="#" class="btn-p">p200 Multi Center</a>
+    </div>
+    <div class="coord">
+        <p>X:0</p><p>Y:0</p><p>Z:0</p>
+    </div>
+</section>
+-------------------------------->
+<div class="deck">
+    <aside class="jog">
+        <h4>Jog X,Y,Z</h4>
+        <table cellpadding="0" cellspacing="0">
+            <tr>
+                <td></td>
+                <td><a href="#" class="btn"><i class="fa fa-arrow-up fa-lg"></i></a></td>
+                <td></td>
+                <td class="spacer"></td>
+                <td><a href="#" class="btn btn-z"><i class="fa fa-arrow-up fa-lg"></i></a></td>
+            </tr>
+            <tr>
+                <td class="pull-right"> <a href="#" class="btn "><i class="fa fa-arrow-left fa-lg"></i></a></td>
+                <td>&nbsp;</td>
+                <td class="pull-left"><a href="#" class="btn "><i class="fa fa-arrow-right fa-lg"></i></a></td>
+                <td class="spacer"></td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><a href="#" class="btn"><i class="fa fa-arrow-down fa-lg"></i></a></td>
+                <td>&nbsp;</td>
+                <td class="spacer"></td>
+                <td><a href="#" class="btn btn-z"><i class="fa fa-arrow-down fa-lg"></i></a></td>
+            </tr>
+        </table>
+        <p>X:0 Y:0 Z:0</p>
+        <h4>Select Increment [mm]</h4>
+        <div class="btn-group">
+            <a href="#" class="btn btn-inc">100</a>
+            <a href="#" class="btn btn-inc">50</a>
+            <a href="#" class="btn btn-inc">10</a>
+            <a href="#" class="btn btn-inc">1.0</a>
+            <a href="#" class="btn btn-inc">0.5</a>
+            <a href="#" class="btn btn-inc">0.1</a>
+        </div>
+        <div class="btn-group">
+            <a href="#" class="btn btn-inc">Slot Width</a>
+            <a href="#" class="btn btn-inc">Slot Height</a>
+        </div>
+        <hr/>
+        <div class="btn-group">
+            <a href="#" class="btn-pipette">p200 Single Left</a>
+            <a href="#" class="btn-pipette">p200 Multi Center</a>
+        </div>
+        <div class="jog-pipette">
+            <div class="left-pipette">
+                <a href="#" class="btn btn-z"><i class="fa fa-arrow-up fa-lg"></i></a>
+                <br>
+                <a href="#" class="btn btn-z"><i class="fa fa-arrow-down fa-lg"></i></a>
+                <p>L:0</p>
+            </div>
+            <div class="right-pipette">
+                <a href="#" class="btn btn-z"><i class="fa fa-arrow-up fa-lg"></i></a>
+                <br>
+                <a href="#" class="btn btn-z"><i class="fa fa-arrow-down fa-lg"></i></a>
+                <p>C:0</p>
+            </div>
+            <h4>Select Increment [mm]</h4>
+            <div class="btn-group">
+            <a href="#" class="btn btn-inc">2.0 mm</a>
+            <a href="#" class="btn btn-inc">0.5 mm</a>
+            <a href="#" class="btn btn-inc">0.1 mm</a>
+
+        </div>
+        </div>
+    </aside>
+    <section class="deckmap">
+        <section class="tabular">
+            <table>
+                <tbody>
+                </tbody>
+            </table>
+        </section>
+    </section>
+</div>
+{% endblock %} {% block scripts %} {% endblock %}

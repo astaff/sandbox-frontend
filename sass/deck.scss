@@ -1,0 +1,161 @@
+@import "util";
+.options {
+    @include grid-row();
+    line-height: $baseline*1.5;
+    vertical-align: middle;
+    margin-bottom: 0;
+    /***********************
+    STYLE FOR SELCT OPTION - REMOVED FOR NOW
+    aside {
+        @include grid-col(3);
+        select {
+            text-align: center;
+            font-size: $basesize;
+            background-color: lighten($primary-blue, 15%);
+            border: none;
+            height: $baseline*1.5;
+            border-radius: $basesize;
+            color: white;
+            width: 100%
+        }
+    }
+    ************************/
+    .btn-group {
+        @include grid-col(3);
+        .btn-p {
+            background-color: $button-green;
+            border-radius: $basesize/2;
+            -webkit-transition: background-color 0.1s;
+            /* Safari */
+            transition: background-color 0.1s;
+            height: $baseline*1.5;
+            padding: $basesize*0.5;
+        }
+        .btn-p:hover {
+            background-color: lighten($button-green, 10%);
+        }
+        .btn-p:active {
+            background-color: darken($button-green, 10%);
+        }
+        :first-child {
+            border-radius: $basesize 0 0 $basesize;
+        }
+        :last-child {
+            border-radius: 0 $basesize $basesize 0;
+        }
+    }
+    .coord {
+        p {
+            @include grid-col(1);
+            padding-top: $basesize*0.5;
+        }
+    }
+}
+
+.deck {
+    @include grid-row();
+    .jog,
+    .deckmap {
+        background-color: $bg-div;
+        //border-radius: $basesize;
+        height: 100%;
+    }
+    .jog {
+        color: $primary-blue;
+        h4 {
+            margin: $basesize;
+        }
+        @include grid-col(3);
+        box-shadow: inset -1px 0 0 rgba(white, 0.5);
+        table {
+            width: 100%;
+            td {
+                line-height: $baseline*1.75;
+                .spacer {
+                    width: $basesize*2;
+                }
+            }
+        }
+        .btn {
+                padding: $basesize*0.75;
+                border-radius: $basesize/2;
+            }
+            .pull-right {
+                transform: translateX($basesize*2);
+            }
+            .pull-left {
+                transform: translateX(-1*$basesize*2);
+            }
+            .btn-z {
+                background-color: $button-green;
+                border-radius: $basesize/2;
+                -webkit-transition: background-color 0.1s;
+                /* Safari */
+                transition: background-color 0.1s;
+            }
+            .btn-z:hover {
+                background-color: lighten($button-green, 10%);
+            }
+        p {
+            text-align: center;
+            padding-top: $baseline;
+            font-size: $basesize*1.25;
+        }
+        hr {
+            border-color: lighten($primary-blue, 40%);
+        }
+        .btn-group {
+            text-align: center;
+            font-size: $basesize;
+            line-height: $baseline*1.5;
+            margin: $baseline/2 0;
+            .btn-inc {
+                line-height: $baseline;
+                border-radius: 0;
+                padding: $basesize*0.5;
+                margin: -1px;
+            }
+            //////////////////////////////////////
+            //PIPETTE BUTTONS
+            //////////////////////////////////////
+            .btn-pipette {
+                background-color: $button-green;
+                border-radius: $basesize/2;
+                -webkit-transition: background-color 0.1s;
+                /* Safari */
+                transition: background-color 0.1s;
+                height: $baseline*1.5;
+                padding: $basesize*0.5;
+                &:hover {
+                background-color: lighten($button-green, 10%);
+                }
+                &:active {
+                background-color: darken($button-green, 10%);
+                }
+            }
+
+            :first-child {
+                border-radius: $basesize 0 0 $basesize;
+            }
+            :last-child {
+                border-radius: 0 $basesize $basesize 0;
+            }
+           
+        }
+        .jog-pipette{
+            text-align: center;
+            .left-pipette, .right-pipette{
+                width:40%;
+                display:inline-block;
+                line-height: $baseline*2;
+            }
+            h4{
+                text-align: left;
+            }
+        }
+    }
+    .deckmap {
+        @include grid-col(9);
+        float: right;
+    }
+}

@@ -1,0 +1,75 @@
+@import "vars";
+
+$columns: 12;
+$gutter-percent: 25%;
+$gutter-width: $gutter-percent / ($columns * 2);
+$column-width: (100%-$gutter-percent)/$columns;
+
+@mixin grid-row {
+	display: block;
+	overflow: hidden;
+	margin: auto;
+	width: 95%;
+	padding: 0% 2.5%;
+	margin-bottom: $baseline;
+}
+
+@function grid-col-width($n) {
+	@return ($column-width*$n)+($gutter-width*(($n - 1)*2))
+}
+
+@mixin grid-col($default:null,$small:null,$medium:null,$large:null) {
+
+	@if ($default) {
+		width: grid-col-width($default);
+	}
+
+	@if $small {
+		@media screen and (max-width: $break-small) {
+			width: grid-col-width($small);
+		}
+	}
+
+	@if $medium {
+		@media screen and (max-width: $break-medium) {
+			width: grid-col-width($medium);
+		}
+	}
+
+	@if $large {
+		@media screen and (min-width: $break-medium+1) {
+			width: grid-col-width($large);
+		}
+	}
+
+	float: left;
+	padding-left: $gutter-width;
+	padding-right: $gutter-width;
+	display:block;
+}
+
+@mixin break($small:false,$large:false,$medium:false) {
+	@if $small {
+		@media screen and (max-width: $break-small) {
+			float:none;
+		}
+	}
+	@if $medium {
+		@media screen and (max-width: $break-medium) {
+			float:none;
+		}
+	}
+	@if $large {
+		@media screen and (max-width: $break-large) {
+			float:none;
+		}
+	}
+}
+
+@mixin grid-align() {
+	margin-left: $gutter-width;
+}
+
+@mixin grid-space($n) {
+	margin-left: grid-col-width($n) + ($gutter-width*3);
+}
