@@ -1,5 +1,9 @@
-# sandbox-frontend
-Initial SASS and Python Integration
+# Sandbox-Frontend
+###Initial SASS and Python Integration
+
+======
+
+*This repo is meant to be a starting point for integrating front end SASS framework with concurrently built back end.*
 
 * Download code.
 * Open code directory in Terminal console.
@@ -28,4 +32,7 @@ Initial SASS and Python Integration
 * If successful you can navigate to <a href='http://localhost:5000'>http://localhost:5000</a>.
 
 =======
+
+* SASS routes can be found and edited in config.rb
+
 
