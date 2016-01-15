@@ -141,7 +141,7 @@ ol {
 }
 /* line 25, ../../sass/deck.scss */
 .options .btn-group .btn-p {
-  background-color: #800055;
+  background-color: #40a17a;
   border-radius: 7px;
   -webkit-transition: background-color 0.1s;
   /* Safari */
@@ -151,11 +151,11 @@ ol {
 }
 /* line 34, ../../sass/deck.scss */
 .options .btn-group .btn-p:hover {
-  background-color: #b30077;
+  background-color: #58bc94;
 }
 /* line 37, ../../sass/deck.scss */
 .options .btn-group .btn-p:active {
-  background-color: #4d0033;
+  background-color: #327d5e;
 }
 /* line 40, ../../sass/deck.scss */
 .options .btn-group :first-child {
@@ -231,7 +231,7 @@ ol {
 }
 /* line 89, ../../sass/deck.scss */
 .deck .jog .btn-z {
-  background-color: #800055;
+  background-color: #40a17a;
   border-radius: 7px;
   -webkit-transition: background-color 0.1s;
   /* Safari */
@@ -239,7 +239,7 @@ ol {
 }
 /* line 96, ../../sass/deck.scss */
 .deck .jog .btn-z:hover {
-  background-color: #b30077;
+  background-color: #58bc94;
 }
 /* line 99, ../../sass/deck.scss */
 .deck .jog p {
@@ -267,7 +267,7 @@ ol {
 }
 /* line 121, ../../sass/deck.scss */
 .deck .jog .btn-group .btn-pipette {
-  background-color: #800055;
+  background-color: #40a17a;
   border-radius: 7px;
   -webkit-transition: background-color 0.1s;
   /* Safari */
