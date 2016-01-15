@@ -11,6 +11,11 @@ def index():
 	# render the template, pass in the animals dictionary refer to it as 'animals'
 	return render_template("sandbox.html")
 
+@app.route('/hello')
+def hello_world():
+    print('whatup backend?')
+    return 'hello'
+
 @app.errorhandler(404)
 def page_not_found(error):
     return render_template('404.html'), 404
