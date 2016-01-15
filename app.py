@@ -8,8 +8,12 @@ app = Flask(__name__)   # create our flask app
 # this is our main page
 @app.route("/")
 def index():
-	# render the template, pass in the animals dictionary refer to it as 'animals'
+	# render the template
 	return render_template("sandbox.html")
+
+@app.route('/hello')
+def hello():
+    print('Hello World')
 
 @app.errorhandler(404)
 def page_not_found(error):
@@ -20,7 +24,7 @@ def page_not_found(error):
 if __name__ == "__main__":
 	app.debug = True
 	
-	port = int(os.environ.get('PORT', 5000)) # locally PORT 5000, Heroku will assign its own port
+	port = int(os.environ.get('PORT', 5000)) # locally PORT 5000
 	app.run(host='0.0.0.0', port=port)
 
 
