@@ -24,7 +24,8 @@ window.addEventListener ('load', function() {
  	if (document.location.origin == "file://") {
 		wsuri = "ws://127.0.0.1:8080/ws";
 	} else {
-    	wsuri = (document.location.protocol === "http:" ? "ws:" : "wss:") + "//" + document.location.host + "/ws";
+    	wsuri = (document.location.protocol === "http:" ? "ws:" : "wss:") + "//" + 127.0.0.1:8080 + "/ws";
+    	//document.location.host + "/ws";
 	}
 
 	// Initialize the WAMP connection to the Router
