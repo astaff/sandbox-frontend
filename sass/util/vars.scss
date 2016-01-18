@@ -7,11 +7,13 @@ $stack-sans   : "trons";
 /* Color Scheme */
 $primary-black: rgba(41,30,38,1);
 $primary-blue : rgba(43,52,91,1);
-$primary-green   : rgba(57, 143, 108,1);
+$primary-green : rgba(30, 104, 107,1);
+
 $primary-pink 	: rgba(153,0,102,1);
 
 $color-link   : tint( $primary-blue, 90% );
-$button-green : lighten( $primary-green, 5% );
+$button-green : lighten( $primary-green, 10% );
+
 $button-pink	: darken($primary-pink, 5%);
 $bg-div	: lighten( $primary-blue, 70% );
 

@@ -23,7 +23,7 @@
     .btn-group {
         @include grid-col(3);
         .btn-p {
-            background-color: $button-pink;
+            background-color: $button-green;
             border-radius: $basesize/2;
             -webkit-transition: background-color 0.1s;
             /* Safari */
@@ -32,10 +32,10 @@
             padding: $basesize*0.5;
         }
         .btn-p:hover {
-            background-color: lighten($button-pink, 10%);
+            background-color: lighten($button-green, 10%);
         }
         .btn-p:active {
-            background-color: darken($button-pink, 10%);
+            background-color: darken($button-green, 10%);
         }
         :first-child {
             border-radius: $basesize 0 0 $basesize;
@@ -87,14 +87,14 @@
                 transform: translateX(-1*$basesize*2);
             }
             .btn-z {
-                background-color: $button-pink;
+                background-color: $button-green;
                 border-radius: $basesize/2;
                 -webkit-transition: background-color 0.1s;
                 /* Safari */
                 transition: background-color 0.1s;
             }
             .btn-z:hover {
-                background-color: lighten($button-pink, 10%);
+                background-color: lighten($button-green, 10%);
             }
         p {
             text-align: center;
@@ -119,7 +119,7 @@
             //PIPETTE BUTTONS
             //////////////////////////////////////
             .btn-pipette {
-                background-color: $button-pink;
+                background-color: $button-green;
                 border-radius: $basesize/2;
                 -webkit-transition: background-color 0.1s;
                 /* Safari */

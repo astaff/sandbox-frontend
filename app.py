@@ -12,8 +12,10 @@ def index():
 	return render_template("sandbox.html")
 
 @app.route('/hello')
-def hello():
-    print('Hello World')
+def hello_world():
+    print('whatup backend?')
+    return 'hello'
+
 
 @app.errorhandler(404)
 def page_not_found(error):
