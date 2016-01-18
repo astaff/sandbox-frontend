@@ -12,7 +12,7 @@ aubahn.min.js required...
 
 /* GLOBAL VARIABLES */
 
-var globalConnection
+var globalConnection;
 
 
 /* Initialize communication */
