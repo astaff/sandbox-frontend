@@ -1,6 +1,10 @@
 /*
 'communication.js' handles all the communication details with
 the driver via crossbar.io with WAMP along with 'socketHandler.js'
+
+aubahn.min.js required...
+<script type="text/javascript" src="./js/autobahn.min.js"></script>
+
 /*
 
 
@@ -55,6 +59,39 @@ window.add EventListener ('load', function() {
 				var msg = JSON.parse(str);
 				// TODO: add socketHandler here
 				/* add socketHandler here */
+
+				var msg = JSON.parse(str);
+        		if(msg.type && socketHandler[msg.type]) socketHandler[msg.type](msg.data);
+
+/*
+
+
+    connection.session.subscribe('com.opentrons.robot_to_browser', function(str) {
+      try{
+        if(debug===true){
+          if(verbose===true || str[0]!==str_last){
+            console.log('message on com.opentrons.robot_to_browser: '+str[0])
+          }
+        }
+        str_last = str[0];
+        var msg = JSON.parse(str);
+        if(msg.type && socketHandler[msg.type]) socketHandler[msg.type](msg.data);
+        else console.log('error handling message (1): '+str);
+        
+      } catch(error) {
+        console.log('error handling message (2)');
+        console.log(error.message);
+      }
+    });
+
+
+*/
+
+
+
+
+
+
 				if (msg.type){
 					console.log('socketHandler will be called here');
 				} else {
