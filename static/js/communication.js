@@ -17,7 +17,7 @@ var globalConnection;
 
 /* Initialize communication */
 
-window.add EventListener ('load', function() {
+window.addEventListener ('load', function() {
 
 	// Initialize the server/router url based off where the file came from
 	var wsuri;
@@ -49,7 +49,7 @@ window.add EventListener ('load', function() {
 
 		connection.session.subscribe('com.opentrons.driver_client_ready', function(status){
 			console.log('driver_client_ready called');
-		}
+		});
 
 		connection.session.publish('com.opentrons.frontend_client_ready', [true]);
 		
