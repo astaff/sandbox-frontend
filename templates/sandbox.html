@@ -1,7 +1,7 @@
 {% extends "/layout.html" %} {% block styles %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/deck.css') }}"> {% endblock %} {% block body %}
 <!--------------------------------
-REMOVED LABWARE DROPDOWN 
+REMOVED LABWARE DROPDOWN
 <section class="options">
 
 <aside>
@@ -28,7 +28,7 @@ REMOVED LABWARE DROPDOWN
         <table cellpadding="0" cellspacing="0">
             <tr>
                 <td></td>
-                <td><a href="#" class="btn" onclick="sendMessage({type: 'move', data:{axis:'y', size:10}});"><i class="fa fa-arrow-up fa-lg"></i></a></td>
+                <td><a href="#" class="btn" onclick="sendMessage({type:'rapid_move', data:{x:10}});"><i class="fa fa-arrow-up fa-lg"></i></a></td>
                 <td></td>
                 <td class="spacer"></td>
                 <td><a href="#" class="btn btn-z"><i class="fa fa-arrow-up fa-lg"></i></a></td>
