@@ -55,9 +55,9 @@ window.addEventListener ('load', function() {
 
 		connection.session.publish('com.opentrons.frontend_client_ready', [true]);
 		
-		connectoin.session.subscribe('com.opentrons.driver_to_frontend', function(str) {
+		connectoin.session.subscribe('com.opentrons.frontend', function(str) {
 			try{
-				console.log('message on com.opentrons.driver_to_frontend: '+str);
+				console.log('message on com.opentrons.frontend: '+str);
 				var msg = JSON.parse(str);
 				// TODO: add socketHandler here
 				/* add socketHandler here */
@@ -114,7 +114,7 @@ window.addEventListener ('load', function() {
 function sendMessage (msg) {
 	try{
 		console.log('sending a message: '+JSON.stringify(msg));
-		globalConnection.session.publish('com.opentrons.frontend_to_driver', [JSON.stringify(msg)]);
+		globalConnection.session.publish('com.opentrons.driver', [JSON.stringify(msg)]);
 	} catch(e) {
 		console.log('error sending message');
 		console.log(e.message);
