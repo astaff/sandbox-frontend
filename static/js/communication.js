@@ -55,7 +55,7 @@ window.addEventListener ('load', function() {
 
 		connection.session.publish('com.opentrons.frontend_client_ready', [true]);
 		
-		connectoin.session.subscribe('com.opentrons.frontend', function(str) {
+		connection.session.subscribe('com.opentrons.frontend', function(str) {
 			try{
 				console.log('message on com.opentrons.frontend: '+str);
 				var msg = JSON.parse(str);
