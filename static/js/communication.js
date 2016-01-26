@@ -111,10 +111,10 @@ window.addEventListener ('load', function() {
 
 /* Send messages function */
 
-function sendMessage (msg) {
+function sendMessage (topic,msg) {
 	try{
 		console.log('sending a message: '+JSON.stringify(msg));
-		globalConnection.session.publish('com.opentrons.driver', [JSON.stringify(msg)]);
+		globalConnection.session.publish(topic, [JSON.stringify(msg)]);
 	} catch(e) {
 		console.log('error sending message');
 		console.log(e.message);
