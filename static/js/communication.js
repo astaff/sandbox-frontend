@@ -63,8 +63,10 @@ window.addEventListener ('load', function() {
 				/* add socketHandler here */
 
 				var msg = JSON.parse(str);
-        		if(msg.type && socketHandler[msg.type]) socketHandler[msg.type](msg.data);
-
+        		//if(msg.type && socketHandler[msg.type]) socketHandler[msg.type](msg.data);
+        		//
+        		// socketHandler format is no longer {'type': ... , 'data': ... }
+        		// now it's {'name' , '' } ... TODO: run a test to confirm format and then finish this
 /*
 
 
