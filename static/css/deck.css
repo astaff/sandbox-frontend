@@ -334,9 +334,10 @@ ol {
 }
 /* line 163, ../../sass/deck.scss */
 .deck .deckmap section .deckbtns .btn {
-  line-height: 66px;
+  line-height: 77px;
+  padding: 28px 14px;
 }
-/* line 167, ../../sass/deck.scss */
+/* line 168, ../../sass/deck.scss */
 .deck .deckmap section .commandForm {
   width: 64.58333%;
   float: left;
@@ -344,25 +345,26 @@ ol {
   padding-right: 1.04167%;
   display: block;
   height: 100vh;
-  background-color: #b195a9;
+  background-color: #cfd4e9;
 }
-/* line 171, ../../sass/deck.scss */
+/* line 172, ../../sass/deck.scss */
 .deck .deckmap section .commandForm input,
 .deck .deckmap section .commandForm textarea {
   width: 100%;
   display: block;
   border-radius: 14px;
   border: 1px solid #2b345b;
+  padding: 14px;
 }
-/* line 178, ../../sass/deck.scss */
+/* line 180, ../../sass/deck.scss */
 .deck .deckmap section .commandForm input {
-  height: 44px;
+  height: 33px;
 }
-/* line 181, ../../sass/deck.scss */
+/* line 184, ../../sass/deck.scss */
 .deck .deckmap section .commandForm textarea {
   height: 88px;
 }
-/* line 184, ../../sass/deck.scss */
+/* line 187, ../../sass/deck.scss */
 .deck .deckmap section .commandForm input[type=submit] {
   color: #FFF;
   text-decoration: none;
@@ -377,7 +379,7 @@ ol {
   /* Safari */
   transition: background-color 1s;
 }
-/* line 197, ../../sass/deck.scss */
+/* line 200, ../../sass/deck.scss */
 .deck .deckmap section .commandForm input[type=submit]:hover {
   background-color: #6877b7;
   text-decoration: none;
