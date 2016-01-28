@@ -44,7 +44,7 @@ p,li,blockquote,pre {
 	margin-bottom : $baseline;
 }
 
-p {
+p, label{
 	margin-top    : 0;
 	margin-bottom : $baseline;
 	line-height   : $baseline;

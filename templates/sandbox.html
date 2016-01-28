@@ -82,19 +82,101 @@ REMOVED LABWARE DROPDOWN
             </div>
             <h4>Select Increment [mm]</h4>
             <div class="btn-group">
-            <a href="#" class="btn btn-inc">2.0 mm</a>
-            <a href="#" class="btn btn-inc">0.5 mm</a>
-            <a href="#" class="btn btn-inc">0.1 mm</a>
-
-        </div>
+                <a href="#" class="btn btn-inc">2.0 mm</a>
+                <a href="#" class="btn btn-inc">0.5 mm</a>
+                <a href="#" class="btn btn-inc">0.1 mm</a>
+            </div>
         </div>
     </aside>
     <section class="deckmap">
-        <section class="tabular">
-            <table>
-                <tbody>
-                </tbody>
-            </table>
+        <section>
+            <div class="deckbtns">
+                <h4>Quick Nav</h4>
+                <a href="#" class="btn">A3</a>
+                <a href="#" class="btn">B3</a>
+                <a href="#" class="btn">C3</a>
+                <a href="#" class="btn">D3</a>
+                <a href="#" class="btn">E3</a>
+                <br>
+                <a href="#" class="btn">A2</a>
+                <a href="#" class="btn">B2</a>
+                <a href="#" class="btn">C2</a>
+                <a href="#" class="btn">D2</a>
+                <a href="#" class="btn">E2</a>
+                <br>
+                <a href="#" class="btn">A1</a>
+                <a href="#" class="btn">B1</a>
+                <a href="#" class="btn">C1</a>
+                <a href="#" class="btn">D1</a>
+                <a href="#" class="btn">E1</a>
+            </div>
+            <div class="commandForm">
+                <h4>Custom Command</h4>
+                <form id="customMsg">
+                    <label for="topic">Topic (destination-route):</label>
+                    <input type="text" name="topic" id="topic" />
+                    <br>
+                    <label for="type">Type:</label>
+                    <input type="text" name="type" id="type" />
+                    <br>
+                    <label for="name">Name (device/hardware?):</label>
+                    <input type="text" name="name" id="name" />
+                    <br>
+                    <label for="message">Message: {"move_to":{"x":20}}  ----- KEYS IN ""</label>
+                    <textarea name="message" id="message">
+                    </textarea>
+                    <br>
+                    <a href="#" onclick="logMe();" class="btn">Send Message</a>
+<!--CUSTOM MESSAGE TESTING SCRIPT  -->
+                    <script type="text/javascript">
+                    function logMe() {
+                        var topic = document.getElementById('topic').value;
+                        var type = document.getElementById('type').value;
+                        var name = document.getElementById('name').value;
+                        var message = document.getElementById('message').value;
+
+
+                        if (message.indexOf("{") >= 0) {
+                            //alert('make it JSON');
+                            message = JSON.parse(message)
+                            console.log(message);
+                        }
+
+                        var data = {
+                            name: name,
+                            message: message
+                        }
+
+                        var msg = {
+                            type:type,
+                            data:data
+                        }
+                        // sendMessage('com.opentrons.' + topic, msg);
+                        console.log ('com.opentrons.' + topic, msg);
+
+                    };
+                    </script>
+                </form>
+                <!-- 
+            topic -  (driver or labware or bootloaded (destination))
+            type - string (command or meta | others for labware)
+            name - string
+            message
+                *name+message = data!              
+                
+                {
+                    type:'command', 
+                    data:{
+                        name: "smoothie",
+                        message: "something object int or string"
+                        }                            
+                    }
+                } 
+
+                if 'smoothie' in data 
+                if data.smoothie console.log(data.smoothie)
+             -->
+            </div>
         </section>
     </section>
 </div>

@@ -51,7 +51,7 @@ p, li, blockquote, pre {
 }
 
 /* line 47, ../../../sass/util/typography.scss */
-p {
+p, label {
   margin-top: 0;
   margin-bottom: 22px;
   line-height: 22px;
