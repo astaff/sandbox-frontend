@@ -54,7 +54,7 @@ p, li, blockquote, pre {
 }
 
 /* line 47, ../../sass/util/typography.scss */
-p {
+p, label {
   margin-top: 0;
   margin-bottom: 22px;
   line-height: 22px;
@@ -283,29 +283,30 @@ ol {
 .deck .jog .btn-group .btn-pipette:active {
   background-color: #1e686b;
 }
-/* line 137, ../../sass/deck.scss */
+/* line 136, ../../sass/deck.scss */
 .deck .jog .btn-group :first-child {
   border-radius: 14px 0 0 14px;
 }
-/* line 140, ../../sass/deck.scss */
+/* line 139, ../../sass/deck.scss */
 .deck .jog .btn-group :last-child {
   border-radius: 0 14px 14px 0;
 }
-/* line 145, ../../sass/deck.scss */
+/* line 143, ../../sass/deck.scss */
 .deck .jog .jog-pipette {
   text-align: center;
 }
-/* line 147, ../../sass/deck.scss */
-.deck .jog .jog-pipette .left-pipette, .deck .jog .jog-pipette .right-pipette {
+/* line 145, ../../sass/deck.scss */
+.deck .jog .jog-pipette .left-pipette,
+.deck .jog .jog-pipette .right-pipette {
   width: 40%;
   display: inline-block;
   line-height: 44px;
 }
-/* line 152, ../../sass/deck.scss */
+/* line 151, ../../sass/deck.scss */
 .deck .jog .jog-pipette h4 {
   text-align: left;
 }
-/* line 157, ../../sass/deck.scss */
+/* line 156, ../../sass/deck.scss */
 .deck .deckmap {
   width: 72.91667%;
   float: left;
@@ -313,4 +314,71 @@ ol {
   padding-right: 1.04167%;
   display: block;
   float: right;
+}
+/* line 159, ../../sass/deck.scss */
+.deck .deckmap section {
+  display: block;
+  overflow: hidden;
+  margin: auto;
+  width: 95%;
+  padding: 0% 2.5%;
+  margin-bottom: 22px;
+}
+/* line 161, ../../sass/deck.scss */
+.deck .deckmap section .deckbtns {
+  width: 31.25%;
+  float: left;
+  padding-left: 1.04167%;
+  padding-right: 1.04167%;
+  display: block;
+}
+/* line 163, ../../sass/deck.scss */
+.deck .deckmap section .deckbtns .btn {
+  line-height: 66px;
+}
+/* line 167, ../../sass/deck.scss */
+.deck .deckmap section .commandForm {
+  width: 64.58333%;
+  float: left;
+  padding-left: 1.04167%;
+  padding-right: 1.04167%;
+  display: block;
+  height: 100vh;
+  background-color: #b195a9;
+}
+/* line 171, ../../sass/deck.scss */
+.deck .deckmap section .commandForm input,
+.deck .deckmap section .commandForm textarea {
+  width: 100%;
+  display: block;
+  border-radius: 14px;
+  border: 1px solid #2b345b;
+}
+/* line 178, ../../sass/deck.scss */
+.deck .deckmap section .commandForm input {
+  height: 44px;
+}
+/* line 181, ../../sass/deck.scss */
+.deck .deckmap section .commandForm textarea {
+  height: 88px;
+}
+/* line 184, ../../sass/deck.scss */
+.deck .deckmap section .commandForm input[type=submit] {
+  color: #FFF;
+  text-decoration: none;
+  border: none;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 14px;
+  background-color: #44528f;
+  padding: 7px 14px;
+  border-radius: 14px;
+  -webkit-transition: background-color 1s;
+  /* Safari */
+  transition: background-color 1s;
+}
+/* line 197, ../../sass/deck.scss */
+.deck .deckmap section .commandForm input[type=submit]:hover {
+  background-color: #6877b7;
+  text-decoration: none;
 }

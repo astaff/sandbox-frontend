@@ -77,25 +77,25 @@
             }
         }
         .btn {
-                padding: $basesize*0.75;
-                border-radius: $basesize/2;
-            }
-            .pull-right {
-                transform: translateX($basesize*2);
-            }
-            .pull-left {
-                transform: translateX(-1*$basesize*2);
-            }
-            .btn-z {
-                background-color: $button-green;
-                border-radius: $basesize/2;
-                -webkit-transition: background-color 0.1s;
-                /* Safari */
-                transition: background-color 0.1s;
-            }
-            .btn-z:hover {
-                background-color: lighten($button-green, 10%);
-            }
+            padding: $basesize*0.75;
+            border-radius: $basesize/2;
+        }
+        .pull-right {
+            transform: translateX($basesize*2);
+        }
+        .pull-left {
+            transform: translateX(-1*$basesize*2);
+        }
+        .btn-z {
+            background-color: $button-green;
+            border-radius: $basesize/2;
+            -webkit-transition: background-color 0.1s;
+            /* Safari */
+            transition: background-color 0.1s;
+        }
+        .btn-z:hover {
+            background-color: lighten($button-green, 10%);
+        }
         p {
             text-align: center;
             padding-top: $baseline;
@@ -127,29 +127,28 @@
                 height: $baseline*1.5;
                 padding: $basesize*0.5;
                 &:hover {
-                background-color: lighten($button-green, 10%);
+                    background-color: lighten($button-green, 10%);
                 }
                 &:active {
-                background-color: darken($button-green, 10%);
+                    background-color: darken($button-green, 10%);
                 }
             }
-
             :first-child {
                 border-radius: $basesize 0 0 $basesize;
             }
             :last-child {
                 border-radius: 0 $basesize $basesize 0;
             }
-           
         }
-        .jog-pipette{
+        .jog-pipette {
             text-align: center;
-            .left-pipette, .right-pipette{
-                width:40%;
-                display:inline-block;
+            .left-pipette,
+            .right-pipette {
+                width: 40%;
+                display: inline-block;
                 line-height: $baseline*2;
             }
-            h4{
+            h4 {
                 text-align: left;
             }
         }
@@ -157,5 +156,50 @@
     .deckmap {
         @include grid-col(9);
         float: right;
+        section {
+            @include grid-row();
+            .deckbtns {
+                @include grid-col(4);
+                .btn {
+                    line-height: $baseline*3;
+                }
+            }
+            .commandForm {
+                @include grid-col(8);
+                height: 100vh;
+                background-color: lighten($primary-black, 50%);
+                input,
+                textarea {
+                    width: 100%;
+                    display: block;
+                    border-radius: $basesize;
+                    border: 1px solid $primary-blue;
+                }
+                input {
+                    height: $baseline*2;
+                }
+                textarea {
+                    height: $baseline*4;
+                }
+                input[type=submit]{
+                    color: #FFF;
+                    text-decoration: none;
+                    border: none;
+                    vertical-align: middle;
+                    text-align: center;
+                    font-size: $basesize;
+                    background-color: lighten($primary-blue, 15%);
+                    padding: $basesize*0.5 $basesize;
+                    border-radius: $basesize;
+                    -webkit-transition: background-color 1s;
+                    /* Safari */
+                    transition: background-color 1s;
+                    &:hover {
+                        background-color: lighten($primary-blue, 30%);
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
     }
 }
