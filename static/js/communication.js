@@ -24,7 +24,8 @@ window.addEventListener ('load', function() {
  	if (document.location.origin == "file://") {
 		wsuri = "ws://127.0.0.1:8080/ws";
 	} else {
-    	wsuri = (document.location.protocol === "http:" ? "ws:" : "wss:") + "//0.0.0.0:8080/ws";
+    	//wsuri = (document.location.protocol === "http:" ? "ws:" : "wss:") + "//0.0.0.0:8080/ws";
+    	wsuri = (document.location.protocol === "http:" ? "ws:" : "wss:") + "//opentrons1.local:8080/ws";
     	console.log("IT WORKED: " + wsuri);
     	//document.location.host + "/ws";
 	}
