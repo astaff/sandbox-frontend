@@ -122,12 +122,12 @@ REMOVED LABWARE DROPDOWN
                     <label for="name">Name (device/hardware?):</label>
                     <input type="text" name="name" id="name" />
                     <br>
-                    <label for="message">Message: {"move_to":{"x":20}}  ----- KEYS IN ""</label>
+                    <label for="message">Message: {"move_to":{"x":20}} ----- KEYS IN ""</label>
                     <textarea name="message" id="message">
                     </textarea>
                     <br>
                     <a href="#" onclick="logMe();" class="btn">Send Message</a>
-<!--CUSTOM MESSAGE TESTING SCRIPT  -->
+                    <!--CUSTOM MESSAGE TESTING SCRIPT  -->
                     <script type="text/javascript">
                     function logMe() {
                         var topic = document.getElementById('topic').value;
@@ -148,11 +148,11 @@ REMOVED LABWARE DROPDOWN
                         }
 
                         var msg = {
-                            type:type,
-                            data:data
+                            type: type,
+                            data: data
                         }
                         sendMessage('com.opentrons.' + topic, msg);
-                        console.log ('com.opentrons.' + topic, msg);
+                        console.log('com.opentrons.' + topic, msg);
 
                     };
                     </script>
@@ -179,5 +179,42 @@ REMOVED LABWARE DROPDOWN
             </div>
         </section>
     </section>
+    <section class="jog">
+        <input type="file" name="file" id="files" class="inputfile" />
+
+            <button class="btn" id="loadFile">Load</button>
+
+        <div id="byte_content"></div>
+    </section>
 </div>
+<script>
+function readBlob() {
+
+    var files = document.getElementById('files').files;
+    if (!files.length) {
+        alert('Please select a file!');
+        return;
+    }
+
+    var file = files[0];
+    var start = 0;
+    var stop = file.size - 1;
+
+    var reader = new FileReader();
+
+    reader.onloadend = function(evt) {
+        if (evt.target.readyState == FileReader.DONE) { 
+            document.getElementById('byte_content').textContent = evt.target.result;
+            var upload = evt.target.result;
+            var protocol = JSON.parse(upload);
+            console.log(protocol);
+        }
+    };
+
+    var blob = file;
+    reader.readAsBinaryString(blob);
+}
+
+document.getElementById('loadFile').addEventListener('click', function(evt){readBlob();}, false);
+</script>
 {% endblock %} {% block scripts %} {% endblock %}

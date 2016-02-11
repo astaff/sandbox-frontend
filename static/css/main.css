@@ -207,7 +207,7 @@ nav ul a:hover {
 }
 
 /* line 71, ../../sass/main.scss */
-a.btn {
+a.btn, .btn {
   color: #FFF;
   text-decoration: none;
   border: none;
@@ -223,12 +223,12 @@ a.btn {
   width: 84px;
 }
 /* line 85, ../../sass/main.scss */
-a.btn:hover {
+a.btn:hover, .btn:hover {
   background-color: #6877b7;
   text-decoration: none;
 }
 
-/* line 91, ../../sass/main.scss */
+/* line 93, ../../sass/main.scss */
 a.btn-tab {
   color: #2b345b;
   text-decoration: none;
@@ -242,7 +242,7 @@ a.btn-tab {
   /* Safari */
   transition: box-shadow 0.1s;
 }
-/* line 103, ../../sass/main.scss */
+/* line 105, ../../sass/main.scss */
 a.btn-tab:hover {
   box-shadow: 2px -2px 2px rgba(43, 52, 91, 0.2);
 }
