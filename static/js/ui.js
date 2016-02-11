@@ -1,4 +1,4 @@
-function readBlob(opt_startByte, opt_stopByte) {
+function readBlob() {
 
     var files = document.getElementById('files').files;
     if (!files.length) {
@@ -7,30 +7,24 @@ function readBlob(opt_startByte, opt_stopByte) {
     }
 
     var file = files[0];
-    var start = parseInt(opt_startByte) || 0;
-    var stop = parseInt(opt_stopByte) || file.size - 1;
+    var start = 0;
+    var stop = file.size - 1;
 
     var reader = new FileReader();
 
-    // If we use onloadend, we need to check the readyState.
     reader.onloadend = function(evt) {
-        if (evt.target.readyState == FileReader.DONE) { // DONE == 2
+        if (evt.target.readyState == FileReader.DONE) {
             document.getElementById('byte_content').textContent = evt.target.result;
             var upload = evt.target.result;
-            var obj = JSON.parse(upload);
-            console.log(obj);
-
+            var protocol = JSON.parse(upload);
+            console.log(protocol);
         }
     };
 
-    var blob = file.slice(start, stop + 1);
+    var blob = file;
     reader.readAsBinaryString(blob);
 }
 
-document.querySelector('.readBytesButtons').addEventListener('click', function(evt) {
-    if (evt.target.tagName.toLowerCase() == 'button') {
-        var startByte = evt.target.getAttribute('data-startbyte');
-        var endByte = evt.target.getAttribute('data-endbyte');
-        readBlob(startByte, endByte);
-    }
+document.getElementById('loadFile').addEventListener('click', function(evt) {
+    readBlob();
 }, false);
