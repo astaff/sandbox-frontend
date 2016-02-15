@@ -11,7 +11,7 @@ var socketHandler = {
 				if (data.data.message.result == 'success') {
 					id = data.to;
 					driver_id = data.from;
-					id_url_topic = 'com.opentrons.'+id
+					id_url_topic = 'com.opentrons.'+id;
 					globalConnection1.session.subscribe(id_url_topic, function(str) {
 						try{
 							console.log('message on '+id_url_topic+': '+str);
@@ -36,6 +36,7 @@ var socketHandler = {
 							console.log(e.message);
 						}
 					});
+					sendMessage('com.opentrons.driver',driver_id,'handshake','driver','extend',);
 				}
 			}
 		}

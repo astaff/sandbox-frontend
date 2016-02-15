@@ -58,7 +58,8 @@ window.addEventListener ('load', function() {
 			console.log('driver_client_ready called');
 		});
 
-		connection1.session.publish('com.opentrons.driver_handshake', [true]);
+		//connection1.session.publish('com.opentrons.driver_handshake', [true]);
+		sendMessage('com.opentrons.driver_handshake','','handshake','driver','extend','');
 		
 		connection1.session.subscribe('com.opentrons.frontend', function(str) {
 			try{
