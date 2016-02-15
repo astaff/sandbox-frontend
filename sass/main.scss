@@ -68,7 +68,7 @@ nav ul {
     }
 }
 
-a.btn {
+a.btn, .btn {
     color: #FFF;
     text-decoration: none;
     border: none;
@@ -88,6 +88,8 @@ a.btn {
     }
 }
 
+
+
 a.btn-tab {
     color: $primary-blue;
     text-decoration: none;
@@ -104,3 +106,5 @@ a.btn-tab {
         box-shadow: 2px -2px 2px rgba($primary-blue, 0.2);
     }
 }
+
+
