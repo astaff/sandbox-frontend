@@ -44,6 +44,5 @@ var socketHandler = {
 		return function(data) {
 			console.log(data);
 		}
-	})();
-
+	})()
 };
