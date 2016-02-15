@@ -40,5 +40,10 @@ var socketHandler = {
 			}
 		}
 	})(),
+	'test' : (function(){
+		return function(data) {
+			console.log(data);
+		}
+	})();
 
 };
