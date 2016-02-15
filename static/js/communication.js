@@ -12,8 +12,12 @@ aubahn.min.js required...
 
 /* GLOBAL VARIABLES */
 
-var globalConnection;
-
+var globalConnection1;
+//var globalDriverConnection;
+//var globalLabwareConnection;
+//var globalBootloaderConnection;
+var id;
+var driver_id;
 
 /* Initialize communication */
 
@@ -31,32 +35,32 @@ window.addEventListener ('load', function() {
 	}
 
 	// Initialize the WAMP connection to the Router
-	var connection = new autobahn.Connection({
+	var connection1 = new autobahn.Connection({
 		url: wsuri,
 		realm: "ot_realm"
 	});
 
 	// Make connection accessible across the entire document
-	globalConnection = connection;
+	globalConnection1 = connection1;
 
-	connection.onclose = function () {
+	connection1.onclose = function () {
 		//TODO: whatever happens onclose
 	};
 
 	// When we open the connection, subscribe and register any protocols
-	connection.onopen = function(session) {
+	connection1.onopen = function(session) {
 		
-		// TODO: stuff that happens onopen
+		// TODO: things that happens onopen
 		// Subscribe and register all function end points we offer from the 
 		// javascript to the other clients (ie python)
 
-		connection.session.subscribe('com.opentrons.driver_client_ready', function(status){
+		connection1.session.subscribe('com.opentrons.driver_client_ready', function(status){
 			console.log('driver_client_ready called');
 		});
 
-		connection.session.publish('com.opentrons.frontend_client_ready', [true]);
+		connection1.session.publish('com.opentrons.driver_handshake', [true]);
 		
-		connection.session.subscribe('com.opentrons.frontend', function(str) {
+		connection1.session.subscribe('com.opentrons.frontend', function(str) {
 			try{
 				console.log('message on com.opentrons.frontend: '+str);
 				var msg = JSON.parse(str);
@@ -68,37 +72,10 @@ window.addEventListener ('load', function() {
         		//
         		// socketHandler format is no longer {'type': ... , 'data': ... }
         		// now it's {'name' , '' } ... TODO: run a test to confirm format and then finish this
-/*
-
-
-    connection.session.subscribe('com.opentrons.robot_to_browser', function(str) {
-      try{
-        if(debug===true){
-          if(verbose===true || str[0]!==str_last){
-            console.log('message on com.opentrons.robot_to_browser: '+str[0])
-          }
-        }
-        str_last = str[0];
-        var msg = JSON.parse(str);
-        if(msg.type && socketHandler[msg.type]) socketHandler[msg.type](msg.data);
-        else console.log('error handling message (1): '+str);
-        
-      } catch(error) {
-        console.log('error handling message (2)');
-        console.log(error.message);
-      }
-    });
-
-
-*/
-
-
-
-
-
 
 				if (msg.type){
 					console.log('socketHandler will be called here');
+					if (socketHandler[msg.type]) socketHandler[msg.type](msg);
 				} else {
 					console.log('error, msg missing type');
 				}
@@ -107,8 +84,9 @@ window.addEventListener ('load', function() {
 				console.log(e.message);
 			}
 		});
+
 	};
-	connection.open();
+	connection1.open();
 });
 
 
@@ -117,7 +95,7 @@ window.addEventListener ('load', function() {
 function sendMessage (topic,msg) {
 	try{
 		console.log('sending a message: '+JSON.stringify(msg));
-		globalConnection.session.publish(topic, [JSON.stringify(msg)]);
+		globalConnection1.session.publish(topic, [JSON.stringify(msg)]);
 	} catch(e) {
 		console.log('error sending message');
 		console.log(e.message);
