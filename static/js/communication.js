@@ -92,8 +92,14 @@ window.addEventListener ('load', function() {
 
 /* Send messages function */
 
-function sendMessage (topic,msg) {
+function sendMessage (topic,to,type,name,message,param) {
 	try{
+		var msg = {
+			'to':to,
+			'from':id,
+			'type':type,
+			'data':{'name':name,'message':{message:param}}
+		};
 		console.log('sending a message: '+JSON.stringify(msg));
 		globalConnection1.session.publish(topic, [JSON.stringify(msg)]);
 	} catch(e) {
