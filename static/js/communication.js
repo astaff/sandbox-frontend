@@ -101,7 +101,7 @@ function sendMessage (topic,to,type,name,message,param) {
 			'type':type,
 			'data':{'name':name,'message':{message:param}}
 		};
-		console.log('sending a message: '+JSON.stringify(msg));
+		console.log('sending a message on ',topic,':\n'+JSON.stringify(msg));
 		globalConnection1.session.publish(topic, [JSON.stringify(msg)]);
 	} catch(e) {
 		console.log('error sending message');
