@@ -9,6 +9,10 @@ var socketHandler = {
 		return function(data) {
 			if (data.data.message.hasOwnProperty('result')) {
 				if (data.data.message.result == 'success') {
+					console.log('data.to: ',data.to);
+					console.log('data.from: ',data.from);
+					console.log('data.type: ',data.type);
+					console.log('data.data: ',data.data);
 					id = data.to;
 					driver_id = data.from;
 					id_url_topic = 'com.opentrons.'+id;
