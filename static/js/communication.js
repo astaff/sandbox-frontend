@@ -95,6 +95,12 @@ window.addEventListener ('load', function() {
 
 function sendMessage (topic,to,type,name,message,param) {
 	try{
+		console.log('topic: ',topic);
+		console.log('to: ',to);
+		console.log('type: ',type);
+		console.log('name: ',name);
+		console.log('message: ',message);
+		console.log('param: ',param);
 		var msg = {
 			'to':to,
 			'from':id,
