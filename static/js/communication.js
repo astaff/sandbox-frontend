@@ -99,9 +99,12 @@ function sendMessage (topic,to,type,name,message,param) {
 			'to':to,
 			'from':id,
 			'type':type,
-			'data':{'name':name,'message':{}}
 		};
-		msg.data.message[message] = param;
+		var dat = {'name':name};
+		var mp = {};
+		mp[message] = param;
+		dat['message'] = mp;
+		msg['data'] = dat;
 		console.log('sending a message on ',topic,':\n'+JSON.stringify(msg));
 		globalConnection1.session.publish(topic, [JSON.stringify(msg)]);
 	} catch(e) {
