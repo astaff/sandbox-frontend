@@ -63,7 +63,7 @@ window.addEventListener ('load', function() {
 		
 		connection1.session.subscribe('com.opentrons.frontend', function(str) {
 			try{
-				console.log('message on com.opentrons.frontend: '+str);
+				console.log('message on com.opentrons.frontend:\n'+str);
 				var msg = JSON.parse(str);
 				// TODO: add socketHandler here
 				/* add socketHandler here */
@@ -93,14 +93,15 @@ window.addEventListener ('load', function() {
 
 /* Send messages function */
 
-function sendMessage (topic,to,type,name,message,param) {
+function sendMessage (topic,to,type,name,mess,param) {
 	try{
 		var msg = {
 			'to':to,
 			'from':id,
 			'type':type,
-			'data':{'name':name,'message':{message:param}}
+			'data':{'name':name,'message':{}}
 		};
+		msg.data.message[message] = param;
 		console.log('sending a message on ',topic,':\n'+JSON.stringify(msg));
 		globalConnection1.session.publish(topic, [JSON.stringify(msg)]);
 	} catch(e) {
