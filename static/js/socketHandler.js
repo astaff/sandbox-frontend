@@ -36,7 +36,7 @@ var socketHandler = {
 							console.log(e.message);
 						}
 					});
-					sendMessage('com.opentrons.driver',driver_id,'handshake','driver','shake','');
+					sendMessage('com.opentrons.driver_handshake',driver_id,'handshake','driver','shake','');
 				}
 			}
 		}
