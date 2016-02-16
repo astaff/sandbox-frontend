@@ -92,23 +92,23 @@ REMOVED LABWARE DROPDOWN
         <section>
             <div class="deckbtns">
                 <h4>Quick Nav</h4>
-                <a href="#" class="btn" onclick="sendMessage('com.opentrons.driver',{type:'command', data:{name:'smoothie',message:{move_to:{X:10,Y:100}}}});">A3</a>
-                <a href="#" class="btn" onclick="sendMessage('com.opentrons.driver',{type:'command', data:{name:'smoothie',message:{move_to:{X:90,Y:100}}}});">B3</a>
-                <a href="#" class="btn" onclick="sendMessage('com.opentrons.driver',{type:'command', data:{name:'smoothie',message:{move_to:{X:170,Y:100}}}});">C3</a>
-                <a href="#" class="btn" onclick="sendMessage('com.opentrons.driver',{type:'command', data:{name:'smoothie',message:{move_to:{X:250,Y:100}}}});">D3</a>
-                <a href="#" class="btn" onclick="sendMessage('com.opentrons.driver',{type:'command', data:{name:'smoothie',message:{move_to:{X:330,Y:100}}}});">E3</a>
+                <a href="#" class="btn" onclick="sendMessage('com.opentrons.driver',driver_id,'command','smoothie','move_to','{X:10,Y:100}');">A3</a>
+                <a href="#" class="btn" onclick="sendMessage('com.opentrons.driver',driver_id,'command','smoothie','move_to','{X:90,Y:100}');">B3</a>
+                <a href="#" class="btn" onclick="sendMessage('com.opentrons.driver',driver_id,'command','smoothie','move_to','{X:170,Y:100}');">C3</a>
+                <a href="#" class="btn" onclick="sendMessage('com.opentrons.driver',driver_id,'command','smoothie','move_to','{X:250,Y:100}');">D3</a>
+                <a href="#" class="btn" onclick="sendMessage('com.opentrons.driver',driver_id,'command','smoothie','move_to','{X:330,Y:100}');">E3</a>
                 <br>
-                <a href="#" class="btn" onclick="sendMessage('com.opentrons.driver',{type:'command', data:{name:'smoothie',message:{move_to:{X:10,Y:220}}}});">A2</a>
-                <a href="#" class="btn" onclick="sendMessage('com.opentrons.driver',{type:'command', data:{name:'smoothie',message:{move_to:{X:90,Y:220}}}});">B2</a>
-                <a href="#" class="btn" onclick="sendMessage('com.opentrons.driver',{type:'command', data:{name:'smoothie',message:{move_to:{X:170,Y:220}}}});">C2</a>
-                <a href="#" class="btn" onclick="sendMessage('com.opentrons.driver',{type:'command', data:{name:'smoothie',message:{move_to:{X:250,Y:220}}}});">D2</a>
-                <a href="#" class="btn" onclick="sendMessage('com.opentrons.driver',{type:'command', data:{name:'smoothie',message:{move_to:{X:330,Y:220}}}});">E2</a>
+                <a href="#" class="btn" onclick="sendMessage('com.opentrons.driver',driver_id,'command','smoothie','move_to','{X:10,Y:220}');">A2</a>
+                <a href="#" class="btn" onclick="sendMessage('com.opentrons.driver',driver_id,'command','smoothie','move_to','{X:90,Y:220}');">B2</a>
+                <a href="#" class="btn" onclick="sendMessage('com.opentrons.driver',driver_id,'command','smoothie','move_to','{X:170,Y:220}');">C2</a>
+                <a href="#" class="btn" onclick="sendMessage('com.opentrons.driver',driver_id,'command','smoothie','move_to','{X:250,Y:220}');">D2</a>
+                <a href="#" class="btn" onclick="sendMessage('com.opentrons.driver',driver_id,'command','smoothie','move_to','{X:330,Y:220}');">E2</a>
                 <br>
-                <a href="#" class="btn" onclick="sendMessage('com.opentrons.driver',{type:'command', data:{name:'smoothie',message:{move_to:{X:10,Y:340}}}});">A1</a>
-                <a href="#" class="btn" onclick="sendMessage('com.opentrons.driver',{type:'command', data:{name:'smoothie',message:{move_to:{X:90,Y:340}}}});">B1</a>
-                <a href="#" class="btn" onclick="sendMessage('com.opentrons.driver',{type:'command', data:{name:'smoothie',message:{move_to:{X:170,Y:340}}}});">C1</a>
-                <a href="#" class="btn" onclick="sendMessage('com.opentrons.driver',{type:'command', data:{name:'smoothie',message:{move_to:{X:250,Y:340}}}});">D1</a>
-                <a href="#" class="btn" onclick="sendMessage('com.opentrons.driver',{type:'command', data:{name:'smoothie',message:{move_to:{X:330,Y:340}}}});">E1</a>
+                <a href="#" class="btn" onclick="sendMessage('com.opentrons.driver',driver_id,'command','smoothie','move_to','{X:10,Y:340}');">A1</a>
+                <a href="#" class="btn" onclick="sendMessage('com.opentrons.driver',driver_id,'command','smoothie','move_to','{X:90,Y:340}');">B1</a>
+                <a href="#" class="btn" onclick="sendMessage('com.opentrons.driver',driver_id,'command','smoothie','move_to','{X:170,Y:340}');">C1</a>
+                <a href="#" class="btn" onclick="sendMessage('com.opentrons.driver',driver_id,'command','smoothie','move_to','{X:250,Y:340}');">D1</a>
+                <a href="#" class="btn" onclick="sendMessage('com.opentrons.driver',driver_id,'command','smoothie','move_to','{X:330,Y:340}');">E1</a>
             </div>
             <div class="commandForm">
                 <h4>Custom Command</h4>
@@ -116,16 +116,22 @@ REMOVED LABWARE DROPDOWN
                     <label for="topic">Topic (destination-route):</label>
                     <input type="text" name="topic" id="topic" />
                     <br>
+
                     <label for="type">Type:</label>
                     <input type="text" name="type" id="type" />
                     <br>
+
                     <label for="name">Name (device/hardware?):</label>
                     <input type="text" name="name" id="name" />
                     <br>
-                    <label for="message">Message: {"move_to":{"x":20}} ----- KEYS IN ""</label>
-                    <textarea name="message" id="message">
-                    </textarea>
+
+                    <label for="message">Message: "move_to" in {"move_to":{"X":20}} ----- KEYS IN ""</label>
+                    <input type="text" name="message" id="message">
+                    </input>
                     <br>
+                    <label for="param">Param: {"X":20} in {"move_to":{"X":20}} ----- KEYS IN ""</label>
+                    <input name="param" id="message">
+                    </input>
                     <a href="#" onclick="logMe();" class="btn">Send Message</a>
                     <!--CUSTOM MESSAGE TESTING SCRIPT  -->
                     <script type="text/javascript">
@@ -134,25 +140,16 @@ REMOVED LABWARE DROPDOWN
                         var type = document.getElementById('type').value;
                         var name = document.getElementById('name').value;
                         var message = document.getElementById('message').value;
+                        var param = document.getElementById('param').value;
 
-
-                        if (message.indexOf("{") >= 0) {
+                        if (param.indexOf("{") >= 0) {
                             //alert('make it JSON');
-                            message = JSON.parse(message)
-                            console.log(message);
+                            param = JSON.parse(param)
+                            console.log(param);
                         }
 
-                        var data = {
-                            name: name,
-                            message: message
-                        }
-
-                        var msg = {
-                            type: type,
-                            data: data
-                        }
-                        sendMessage('com.opentrons.' + topic, msg);
-                        console.log('com.opentrons.' + topic, msg);
+                        sendMessage('com.opentrons.' + topic,'',type,name,message,param);
+                        console.log('com.opentrons.' + topic,'',type,name,message,param);
 
                     };
                     </script>
