@@ -93,7 +93,7 @@ window.addEventListener ('load', function() {
 
 /* Send messages function */
 
-function sendMessage (topic,to,type,name,mess,param) {
+function sendMessage (topic,to,type,name,message,param) {
 	try{
 		var msg = {
 			'to':to,
