@@ -186,12 +186,13 @@ ol {
 }
 /* line 57, ../../sass/deck.scss */
 .deck .jog,
-.deck .deckmap {
+.deck .deckmap,
+.deck .steps {
   background-color: #f2f3f9;
   height: 100%;
 }
-/* line 63, ../../sass/deck.scss */
-.deck .jog {
+/* line 64, ../../sass/deck.scss */
+.deck .jog, .deck .steps {
   color: #2b345b;
   width: 22.91667%;
   float: left;
@@ -200,73 +201,73 @@ ol {
   display: block;
   box-shadow: inset -1px 0 0 rgba(255, 255, 255, 0.5);
 }
-/* line 65, ../../sass/deck.scss */
-.deck .jog h4 {
+/* line 66, ../../sass/deck.scss */
+.deck .jog h4, .deck .steps h4 {
   margin: 14px;
 }
-/* line 70, ../../sass/deck.scss */
-.deck .jog table {
+/* line 71, ../../sass/deck.scss */
+.deck .jog table, .deck .steps table {
   width: 100%;
 }
-/* line 72, ../../sass/deck.scss */
-.deck .jog table td {
+/* line 73, ../../sass/deck.scss */
+.deck .jog table td, .deck .steps table td {
   line-height: 38.5px;
 }
-/* line 74, ../../sass/deck.scss */
-.deck .jog table td .spacer {
+/* line 75, ../../sass/deck.scss */
+.deck .jog table td .spacer, .deck .steps table td .spacer {
   width: 28px;
 }
-/* line 79, ../../sass/deck.scss */
-.deck .jog .btn {
+/* line 80, ../../sass/deck.scss */
+.deck .jog .btn, .deck .steps .btn {
   padding: 10.5px;
   border-radius: 7px;
 }
-/* line 83, ../../sass/deck.scss */
-.deck .jog .pull-right {
+/* line 84, ../../sass/deck.scss */
+.deck .jog .pull-right, .deck .steps .pull-right {
   transform: translateX(28px);
 }
-/* line 86, ../../sass/deck.scss */
-.deck .jog .pull-left {
+/* line 87, ../../sass/deck.scss */
+.deck .jog .pull-left, .deck .steps .pull-left {
   transform: translateX(-28px);
 }
-/* line 89, ../../sass/deck.scss */
-.deck .jog .btn-z {
+/* line 90, ../../sass/deck.scss */
+.deck .jog .btn-z, .deck .steps .btn-z {
   background-color: #298f93;
   border-radius: 7px;
   -webkit-transition: background-color 0.1s;
   /* Safari */
   transition: background-color 0.1s;
 }
-/* line 96, ../../sass/deck.scss */
-.deck .jog .btn-z:hover {
+/* line 97, ../../sass/deck.scss */
+.deck .jog .btn-z:hover, .deck .steps .btn-z:hover {
   background-color: #34b5bb;
 }
-/* line 99, ../../sass/deck.scss */
-.deck .jog p {
+/* line 100, ../../sass/deck.scss */
+.deck .jog p, .deck .steps p {
   text-align: center;
   padding-top: 22px;
   font-size: 17.5px;
 }
-/* line 104, ../../sass/deck.scss */
-.deck .jog hr {
+/* line 105, ../../sass/deck.scss */
+.deck .jog hr, .deck .steps hr {
   border-color: #8a96c8;
 }
-/* line 107, ../../sass/deck.scss */
-.deck .jog .btn-group {
+/* line 108, ../../sass/deck.scss */
+.deck .jog .btn-group, .deck .steps .btn-group {
   text-align: center;
   font-size: 14px;
   line-height: 33px;
   margin: 11px 0;
 }
-/* line 112, ../../sass/deck.scss */
-.deck .jog .btn-group .btn-inc {
+/* line 113, ../../sass/deck.scss */
+.deck .jog .btn-group .btn-inc, .deck .steps .btn-group .btn-inc {
   line-height: 22px;
   border-radius: 0;
   padding: 7px;
   margin: -1px;
 }
-/* line 121, ../../sass/deck.scss */
-.deck .jog .btn-group .btn-pipette {
+/* line 122, ../../sass/deck.scss */
+.deck .jog .btn-group .btn-pipette, .deck .steps .btn-group .btn-pipette {
   background-color: #298f93;
   border-radius: 7px;
   -webkit-transition: background-color 0.1s;
@@ -275,38 +276,39 @@ ol {
   height: 33px;
   padding: 7px;
 }
-/* line 129, ../../sass/deck.scss */
-.deck .jog .btn-group .btn-pipette:hover {
+/* line 130, ../../sass/deck.scss */
+.deck .jog .btn-group .btn-pipette:hover, .deck .steps .btn-group .btn-pipette:hover {
   background-color: #34b5bb;
 }
-/* line 132, ../../sass/deck.scss */
-.deck .jog .btn-group .btn-pipette:active {
+/* line 133, ../../sass/deck.scss */
+.deck .jog .btn-group .btn-pipette:active, .deck .steps .btn-group .btn-pipette:active {
   background-color: #1e686b;
 }
-/* line 136, ../../sass/deck.scss */
-.deck .jog .btn-group :first-child {
+/* line 137, ../../sass/deck.scss */
+.deck .jog .btn-group :first-child, .deck .steps .btn-group :first-child {
   border-radius: 14px 0 0 14px;
 }
-/* line 139, ../../sass/deck.scss */
-.deck .jog .btn-group :last-child {
+/* line 140, ../../sass/deck.scss */
+.deck .jog .btn-group :last-child, .deck .steps .btn-group :last-child {
   border-radius: 0 14px 14px 0;
 }
-/* line 143, ../../sass/deck.scss */
-.deck .jog .jog-pipette {
+/* line 144, ../../sass/deck.scss */
+.deck .jog .jog-pipette, .deck .steps .jog-pipette {
   text-align: center;
 }
-/* line 145, ../../sass/deck.scss */
+/* line 146, ../../sass/deck.scss */
 .deck .jog .jog-pipette .left-pipette,
-.deck .jog .jog-pipette .right-pipette {
+.deck .jog .jog-pipette .right-pipette, .deck .steps .jog-pipette .left-pipette,
+.deck .steps .jog-pipette .right-pipette {
   width: 40%;
   display: inline-block;
   line-height: 44px;
 }
-/* line 151, ../../sass/deck.scss */
-.deck .jog .jog-pipette h4 {
+/* line 152, ../../sass/deck.scss */
+.deck .jog .jog-pipette h4, .deck .steps .jog-pipette h4 {
   text-align: left;
 }
-/* line 156, ../../sass/deck.scss */
+/* line 157, ../../sass/deck.scss */
 .deck .deckmap {
   width: 72.91667%;
   float: left;
@@ -315,7 +317,7 @@ ol {
   display: block;
   float: right;
 }
-/* line 159, ../../sass/deck.scss */
+/* line 160, ../../sass/deck.scss */
 .deck .deckmap section {
   display: block;
   overflow: hidden;
@@ -324,7 +326,7 @@ ol {
   padding: 0% 2.5%;
   margin-bottom: 22px;
 }
-/* line 161, ../../sass/deck.scss */
+/* line 162, ../../sass/deck.scss */
 .deck .deckmap section .deckbtns {
   width: 31.25%;
   float: left;
@@ -332,12 +334,12 @@ ol {
   padding-right: 1.04167%;
   display: block;
 }
-/* line 163, ../../sass/deck.scss */
+/* line 164, ../../sass/deck.scss */
 .deck .deckmap section .deckbtns .btn {
   line-height: 77px;
   padding: 28px 14px;
 }
-/* line 168, ../../sass/deck.scss */
+/* line 169, ../../sass/deck.scss */
 .deck .deckmap section .commandForm {
   width: 64.58333%;
   float: left;
@@ -347,7 +349,7 @@ ol {
   height: 100vh;
   background-color: #cfd4e9;
 }
-/* line 172, ../../sass/deck.scss */
+/* line 173, ../../sass/deck.scss */
 .deck .deckmap section .commandForm input,
 .deck .deckmap section .commandForm textarea {
   width: 100%;
@@ -356,7 +358,7 @@ ol {
   border: 1px solid #2b345b;
   padding: 14px;
 }
-/* line 180, ../../sass/deck.scss */
+/* line 181, ../../sass/deck.scss */
 .deck .deckmap section .commandForm input {
   height: 33px;
 }
@@ -383,4 +385,69 @@ ol {
 .deck .deckmap section .commandForm input[type=submit]:hover {
   background-color: #6877b7;
   text-decoration: none;
+}
+/* line 207, ../../sass/deck.scss */
+.deck .deckmap ul.currentLabware {
+  width: 31.25%;
+  float: left;
+  padding-left: 1.04167%;
+  padding-right: 1.04167%;
+  display: block;
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 20px;
+}
+/* line 212, ../../sass/deck.scss */
+.deck .deckmap ul.currentLabware li {
+  display: block;
+  margin-bottom: -1px;
+  background-color: white;
+  border: 1px solid #2b345b;
+  padding: 14px;
+}
+/* line 218, ../../sass/deck.scss */
+.deck .deckmap ul.currentLabware li a {
+  color: #2b345b;
+}
+/* line 222, ../../sass/deck.scss */
+.deck .deckmap ul.currentLabware li:hover {
+  background-color: #adb5d8;
+}
+/* line 225, ../../sass/deck.scss */
+.deck .deckmap ul.currentLabware li.active {
+  background-color: #7986c0;
+}
+/* line 227, ../../sass/deck.scss */
+.deck .deckmap ul.currentLabware li.active a {
+  color: white;
+}
+/* line 232, ../../sass/deck.scss */
+.deck .deckmap table {
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+}
+/* line 236, ../../sass/deck.scss */
+.deck .deckmap table th {
+  font-size: 28px;
+  height: 88px;
+}
+/* line 240, ../../sass/deck.scss */
+.deck .deckmap table tbody {
+  border: 1px solid #990066;
+}
+/* line 243, ../../sass/deck.scss */
+.deck .deckmap table tr {
+  border-bottom: 1px solid #990066;
+  height: 44px;
+}
+/* line 247, ../../sass/deck.scss */
+.deck .deckmap table td:first-child {
+  width: 20%;
+  text-align: left;
+  padding-left: 14px;
+}
+/* line 252, ../../sass/deck.scss */
+.deck .deckmap table tr:hover, .deck .deckmap table tr:active {
+  background-color: #adb5d8;
 }

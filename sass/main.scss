@@ -107,4 +107,46 @@ a.btn-tab {
     }
 }
 
+.btn-group {
+    
+    .btn-p {
+        background-color: $button-green;
+        border-radius: $basesize/2;
+        -webkit-transition: background-color 0.1s;
+        /* Safari */
+        transition: background-color 0.1s;
+        height: $baseline*1.5;
+        padding: $basesize*0.5;
+    }
+    .btn-p:hover {
+        background-color: lighten($button-green, 10%);
+    }
+    .btn-p:active {
+        background-color: darken($button-green, 10%);
+    }
+    :first-child {
+        border-radius: $basesize 0 0 $basesize;
+    }
+    :last-child {
+        border-radius: 0 $basesize $basesize 0;
+    }
+}
+
+
+
+#wizard {
+    .steps .step {
+        display: none;
+    }
+    .steps.step-one .step-one {
+        display: block;
+    }
+    .steps.step-two .step-two {
+        display: block;
+    }
+    .steps.step-three .step-three {
+        display: block;
+    }
+}
+
 

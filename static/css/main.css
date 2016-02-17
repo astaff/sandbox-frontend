@@ -246,3 +246,47 @@ a.btn-tab {
 a.btn-tab:hover {
   box-shadow: 2px -2px 2px rgba(43, 52, 91, 0.2);
 }
+
+/* line 112, ../../sass/main.scss */
+.btn-group .btn-p {
+  background-color: #298f93;
+  border-radius: 7px;
+  -webkit-transition: background-color 0.1s;
+  /* Safari */
+  transition: background-color 0.1s;
+  height: 33px;
+  padding: 7px;
+}
+/* line 121, ../../sass/main.scss */
+.btn-group .btn-p:hover {
+  background-color: #34b5bb;
+}
+/* line 124, ../../sass/main.scss */
+.btn-group .btn-p:active {
+  background-color: #1e686b;
+}
+/* line 127, ../../sass/main.scss */
+.btn-group :first-child {
+  border-radius: 14px 0 0 14px;
+}
+/* line 130, ../../sass/main.scss */
+.btn-group :last-child {
+  border-radius: 0 14px 14px 0;
+}
+
+/* line 138, ../../sass/main.scss */
+#wizard .steps .step {
+  display: none;
+}
+/* line 141, ../../sass/main.scss */
+#wizard .steps.step-one .step-one {
+  display: block;
+}
+/* line 144, ../../sass/main.scss */
+#wizard .steps.step-two .step-two {
+  display: block;
+}
+/* line 147, ../../sass/main.scss */
+#wizard .steps.step-three .step-three {
+  display: block;
+}

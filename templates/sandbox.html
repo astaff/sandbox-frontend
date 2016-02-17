@@ -180,26 +180,68 @@ REMOVED LABWARE DROPDOWN
         </section>
     </section>
     <section class="jog">
+        <h3>Load JSON</h3>
         <input type="file" name="file" id="files" class="inputfile" />
-
-            <button class="btn" id="loadFile">Load</button>
-
+        <button class="btn" id="loadFile">Load</button>
         <div id="byte_content"></div>
     </section>
     <section class="deckmap">
-    <section><h1>Labware From Protocol Placeholder</h1></section>
+                <table>
+            <thead>
+                <tr>
+                    <th colspan="1">Labware</th>
+                    <th colspan="3">Left
+                        <br>X:0.0 Y:0.0 Z:0.0</th>
+                    <th colspan="3">Center
+                        <br>X:0.0 Y:0.0 Z:0.0</th>
+                    <th colspan="1">Clear Btns</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>p200</td>
+                    <td><a class="btn">Save</a></td>
+                    <td><a class="btn">Move To</a></td>
+                    <td><a class="btn">Pick Up Tip</a></td>
+                    <td><a class="btn">Save</a></td>
+                    <td><a class="btn">Move To</a></td>
+                    <td><a class="btn">Pick Up Tip</a></td>
+                    <td><a class="btn">Clear</a></td>
+                </tr>
+                <tr>
+                    <td>trough</td>
+                    <td><a class="btn">Save</a></td>
+                    <td><a class="btn">Move To</a></td>
+                    <td><a class="btn">Pick Up Tip</a></td>
+                    <td><a class="btn">Save</a></td>
+                    <td><a class="btn">Move To</a></td>
+                    <td><a class="btn">Pick Up Tip</a></td>
+                    <td><a class="btn">Clear</a></td>
+                </tr>
+                <tr>
+                    <td>trash</td>
+                    <td><a class="btn">Save</a></td>
+                    <td><a class="btn">Move To</a></td>
+                    <td><a class="btn">Pick Up Tip</a></td>
+                    <td><a class="btn">Save</a></td>
+                    <td><a class="btn">Move To</a></td>
+                    <td><a class="btn">Pick Up Tip</a></td>
+                    <td><a class="btn">Clear</a></td>
+                </tr>
+            </tbody>
+        </table>
+        
+    </section>
+    <section class="jog">
+    </section>
+    <section class="deckmap">
+    
+<ul class="currentLabware">
+            <li class="active"><a>p200 tiprack</a></li>
+            <li><a>trash</a></li>
+        </ul>
     </section>
 </div>
-
-
-
-
-
-
-
-
-
-
 <!-- Load File Script - Can't Link Externally yet? -->
 <script>
 function readBlob() {
@@ -217,11 +259,15 @@ function readBlob() {
     var reader = new FileReader();
 
     reader.onloadend = function(evt) {
-        if (evt.target.readyState == FileReader.DONE) { 
+        if (evt.target.readyState == FileReader.DONE) {
             document.getElementById('byte_content').textContent = evt.target.result;
             var upload = evt.target.result;
             var protocol = JSON.parse(upload);
-            console.log(protocol);
+            console.log(protocol.deck);
+            //loop through and get 
+            for (var key in protocol.deck) {
+                console.log("Key: " + key);
+            }
         }
     };
 
@@ -229,11 +275,8 @@ function readBlob() {
     reader.readAsBinaryString(blob);
 }
 
-document.getElementById('loadFile').addEventListener('click', function(evt){readBlob();}, false);
+document.getElementById('loadFile').addEventListener('click', function(evt) {
+    readBlob();
+}, false);
 </script>
-
-
-
-
-
 {% endblock %} {% block scripts %} {% endblock %}

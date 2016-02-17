@@ -55,12 +55,13 @@
 .deck {
     @include grid-row();
     .jog,
-    .deckmap {
+    .deckmap,
+    .steps {
         background-color: $bg-div;
         //border-radius: $basesize;
         height: 100%;
     }
-    .jog {
+    .jog, .steps {
         color: $primary-blue;
         h4 {
             margin: $basesize;
@@ -162,7 +163,7 @@
                 @include grid-col(4);
                 .btn {
                     line-height: $baseline*3.5;
-                    padding:$basesize*2 $basesize;
+                    padding: $basesize*2 $basesize;
                 }
             }
             .commandForm {
@@ -175,16 +176,15 @@
                     display: block;
                     border-radius: $basesize;
                     border: 1px solid $primary-blue;
-                    padding:$basesize;
+                    padding: $basesize;
                 }
                 input {
                     height: $baseline*1.5;
-
                 }
                 textarea {
                     height: $baseline*4;
                 }
-                input[type=submit]{
+                input[type=submit] {
                     color: #FFF;
                     text-decoration: none;
                     border: none;
@@ -202,6 +202,55 @@
                         text-decoration: none;
                     }
                 }
+            }
+        }
+        ul.currentLabware {
+            @include grid-col(4);
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 20px;
+            li {
+                display: block;
+                margin-bottom: -1px;
+                background-color: white;
+                border: 1px solid $primary-blue;
+                padding: $basesize;
+                a {
+                    color: $primary-blue;
+                }
+            }
+            li:hover {
+                background-color: lighten( $primary-blue, 50%);
+            }
+            li.active {
+                background-color: lighten( $primary-blue, 35%);
+                a {
+                    color: white;
+                }
+            }
+        }
+        table {
+            width: 100%;
+            text-align: center;
+            border-collapse: collapse;
+            th {
+                font-size: $basesize*2;
+                height: $baseline*4;
+            }
+            tbody{
+                border: 1px solid $primary-pink;
+            }
+            tr {
+                border-bottom: 1px solid $primary-pink;
+                height: $baseline*2;
+            }
+            td:first-child {
+                width: 20%;
+                text-align: left;
+                padding-left:$basesize;
+            }
+            tr:hover, tr:active{
+                background-color: lighten($primary-blue, 50%);
             }
         }
     }

@@ -1,0 +1,291 @@
+/* Typography */
+/* Color Scheme */
+/* Responsive Breakpoints */
+/* Typography */
+/* Color Scheme */
+/* Responsive Breakpoints */
+@font-face {
+  font-family: "trons";
+  src: url("../fonts/Geogtq-Rg-webfont.woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+/* line 10, ../../sass/util/typography.scss */
+body {
+  font-size: 14px;
+  font-family: "trons" , sans-serif;
+  margin: 0;
+  color: #2b345b;
+}
+
+/* line 17, ../../sass/util/typography.scss */
+h1 {
+  margin-top: 0;
+  font-size: 35px;
+  font-weight: 100;
+  line-height: 44px;
+  margin-bottom: 22px;
+}
+
+/* line 25, ../../sass/util/typography.scss */
+h2 {
+  font-weight: 100;
+  font-size: 28px;
+  margin-bottom: 22px;
+  line-height: 44px;
+}
+
+/* line 31, ../../sass/util/typography.scss */
+h3 {
+  font-weight: 100;
+  font-size: 21px;
+  margin-bottom: 22px;
+  line-height: 33px;
+}
+
+/* line 38, ../../sass/util/typography.scss */
+p, li, blockquote, pre {
+  font-family: "trons";
+  font-size: 14px;
+  line-height: 22px;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 22px;
+}
+
+/* line 47, ../../sass/util/typography.scss */
+p, label {
+  margin-top: 0;
+  margin-bottom: 22px;
+  line-height: 22px;
+}
+
+/* line 53, ../../sass/util/typography.scss */
+a {
+  text-decoration: none;
+  color: #eaebef;
+}
+
+/* line 60, ../../sass/util/typography.scss */
+ol {
+  padding-left: 1.5em;
+  list-style-type: decimal;
+}
+
+/* Typography */
+/* Color Scheme */
+/* Responsive Breakpoints */
+@font-face {
+  font-family: 'tronicon';
+  src: url("../fonts/tronicons.eot?17nqcd");
+  src: url("../fonts/tronicons.eot?17nqcd#iefix") format("embedded-opentype"), url("../fonts/tronicons.ttf?17nqcd") format("truetype"), url("../fonts/tronicons.woff?17nqcd") format("woff"), url("../fonts/tronicons.svg?17nqcd#tronicons") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+/* line 12, ../../sass/util/tronicon.scss */
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'tronicon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 22px;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* line 28, ../../sass/util/tronicon.scss */
+.icon-tron-logo:before {
+  content: "\e900";
+  vertical-align: middle;
+}
+
+/* line 2, ../../sass/walkthrough.scss */
+.deck {
+  display: block;
+  overflow: hidden;
+  margin: auto;
+  width: 95%;
+  padding: 0% 2.5%;
+  margin-bottom: 22px;
+}
+/* line 4, ../../sass/walkthrough.scss */
+.deck .step-list {
+  width: 22.91667%;
+  float: left;
+  padding-left: 1.04167%;
+  padding-right: 1.04167%;
+  display: block;
+  background-color: #f2f3f9;
+  height: 100%;
+}
+/* line 9, ../../sass/walkthrough.scss */
+.deck .step-list ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 20px;
+}
+/* line 13, ../../sass/walkthrough.scss */
+.deck .step-list ul li {
+  display: block;
+  margin-bottom: -1px;
+  background-color: white;
+  padding: 14px;
+}
+/* line 19, ../../sass/walkthrough.scss */
+.deck .step-list ul li a {
+  color: #2b345b;
+}
+/* line 23, ../../sass/walkthrough.scss */
+.deck .step-list ul li:hover {
+  background-color: #adb5d8;
+}
+/* line 26, ../../sass/walkthrough.scss */
+.deck .step-list ul li.active {
+  background-color: #7986c0;
+}
+/* line 28, ../../sass/walkthrough.scss */
+.deck .step-list ul li.active a {
+  color: white;
+}
+/* line 34, ../../sass/walkthrough.scss */
+.deck .step-item {
+  width: 47.91667%;
+  float: left;
+  padding-left: 1.04167%;
+  padding-right: 1.04167%;
+  display: block;
+  border: 1px solid;
+  height: 80%;
+  background-color: #f2f3f9;
+}
+/* line 39, ../../sass/walkthrough.scss */
+.deck .step-item figure img {
+  width: 100%;
+  height: 50%;
+}
+
+/* line 47, ../../sass/walkthrough.scss */
+.coord p {
+  width: 6.25%;
+  float: left;
+  padding-left: 1.04167%;
+  padding-right: 1.04167%;
+  display: block;
+  padding-top: 7px;
+}
+
+/* line 53, ../../sass/walkthrough.scss */
+.jog {
+  width: 47.91667%;
+  float: left;
+  padding-left: 1.04167%;
+  padding-right: 1.04167%;
+  display: block;
+}
+/* line 56, ../../sass/walkthrough.scss */
+.jog table {
+  width: 100%;
+  display: block;
+}
+/* line 60, ../../sass/walkthrough.scss */
+.jog table td {
+  line-height: 38.5px;
+}
+/* line 62, ../../sass/walkthrough.scss */
+.jog table td .spacer {
+  width: 28px;
+}
+/* line 67, ../../sass/walkthrough.scss */
+.jog .btn {
+  padding: 10.5px;
+  border-radius: 7px;
+}
+/* line 71, ../../sass/walkthrough.scss */
+.jog .pull-right {
+  transform: translateX(28px);
+}
+/* line 74, ../../sass/walkthrough.scss */
+.jog .pull-left {
+  transform: translateX(-28px);
+}
+/* line 77, ../../sass/walkthrough.scss */
+.jog .btn-z {
+  background-color: #298f93;
+  border-radius: 7px;
+  -webkit-transition: background-color 0.1s;
+  /* Safari */
+  transition: background-color 0.1s;
+}
+/* line 84, ../../sass/walkthrough.scss */
+.jog .btn-z:hover {
+  background-color: #34b5bb;
+}
+/* line 87, ../../sass/walkthrough.scss */
+.jog p {
+  text-align: center;
+  padding-top: 22px;
+  font-size: 17.5px;
+}
+/* line 92, ../../sass/walkthrough.scss */
+.jog hr {
+  border-color: #8a96c8;
+}
+/* line 95, ../../sass/walkthrough.scss */
+.jog .btn-group {
+  text-align: center;
+  font-size: 14px;
+  line-height: 33px;
+  margin: 11px 0;
+}
+/* line 100, ../../sass/walkthrough.scss */
+.jog .btn-group .btn-inc {
+  line-height: 22px;
+  border-radius: 0;
+  padding: 7px;
+  margin: -1px;
+}
+/* line 109, ../../sass/walkthrough.scss */
+.jog .btn-group .btn-pipette {
+  background-color: #298f93;
+  border-radius: 7px;
+  -webkit-transition: background-color 0.1s;
+  /* Safari */
+  transition: background-color 0.1s;
+  height: 33px;
+  padding: 7px;
+}
+/* line 117, ../../sass/walkthrough.scss */
+.jog .btn-group .btn-pipette:hover {
+  background-color: #34b5bb;
+}
+/* line 120, ../../sass/walkthrough.scss */
+.jog .btn-group .btn-pipette:active {
+  background-color: #1e686b;
+}
+/* line 124, ../../sass/walkthrough.scss */
+.jog .btn-group :first-child {
+  border-radius: 14px 0 0 14px;
+}
+/* line 127, ../../sass/walkthrough.scss */
+.jog .btn-group :last-child {
+  border-radius: 0 14px 14px 0;
+}
+/* line 131, ../../sass/walkthrough.scss */
+.jog .jog-pipette {
+  text-align: center;
+}
+/* line 133, ../../sass/walkthrough.scss */
+.jog .jog-pipette .left-pipette,
+.jog .jog-pipette .right-pipette {
+  width: 40%;
+  display: inline-block;
+  line-height: 44px;
+}
+/* line 139, ../../sass/walkthrough.scss */
+.jog .jog-pipette h4 {
+  text-align: left;
+}

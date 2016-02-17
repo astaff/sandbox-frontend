@@ -8,8 +8,18 @@ app = Flask(__name__)   # create our flask app
 # this is our main page
 @app.route("/")
 def index():
-	# render the template
 	return render_template("sandbox.html")
+
+
+@app.route("/wizard")
+def sanbox():
+	return render_template("wizard-test.html")
+
+@app.route("/calibrate")
+def calibrate():
+	return render_template("calibrate.html")
+
+
 
 @app.route('/hello')
 def hello_world():
