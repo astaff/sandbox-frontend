@@ -13,16 +13,34 @@ aubahn.min.js required...
 /* GLOBAL VARIABLES */
 
 var globalConnection1;
-//var globalDriverConnection;
-//var globalLabwareConnection;
-//var globalBootloaderConnection;
 var id;
 var driver_id;
 
+
+/* Cookie Helpers */
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1);
+        if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+    }
+    return "";
+}
+
+
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+d.toUTCString();
+    document.cookie = cname + "=" + cvalue + "; " + expires;
+}
 /* Initialize communication */
 
 window.addEventListener ('load', function() {
-
+	id = getCookie('otone-client-id');
+	driver_id = getCookie('otone-driver-id');
 	// Initialize the server/router url based off where the file came from
 	var wsuri;
  	if (document.location.origin == "file://") {
@@ -30,7 +48,7 @@ window.addEventListener ('load', function() {
 	} else {
     	//wsuri = (document.location.protocol === "http:" ? "ws:" : "wss:") + "//0.0.0.0:8080/ws";
     	wsuri = (document.location.protocol === "http:" ? "ws:" : "wss:") + "//10.10.1.2:8080/ws";
-    	console.log("IT WORKED: " + wsuri);
+    	console.log("wsuri: " + wsuri);
     	//document.location.host + "/ws";
 	}
 
@@ -54,12 +72,12 @@ window.addEventListener ('load', function() {
 		// Subscribe and register all function end points we offer from the 
 		// javascript to the other clients (ie python)
 
-		connection1.session.subscribe('com.opentrons.driver_client_ready', function(status){
-			console.log('driver_client_ready called');
-		});
-
 		//connection1.session.publish('com.opentrons.driver_handshake', [true]);
-		sendMessage('com.opentrons.driver_handshake','','handshake','driver','extend','');
+		if (id=="") {
+			sendMessage('com.opentrons.driver_handshake',driver_id,'handshake','driver','extend','');
+		} else {
+			sendMessage('com.opentrons.driver_handshake','','handshake','driver','extend','');
+		}
 		
 		connection1.session.subscribe('com.opentrons.frontend', function(str) {
 			try{
