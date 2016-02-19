@@ -1,27 +1,5 @@
 {% extends "/layout.html" %} {% block styles %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/deck.css') }}"> {% endblock %} {% block body %}
-<!--------------------------------
-REMOVED LABWARE DROPDOWN
-<section class="options">
-
-<aside>
-        <select>
-            <option value="#">Labware</option>
-            <option value="#">96 Wellplate</option>
-            <option value="#">p200 triprack</option>
-            <option value="#">trash</option>
-        </select>
-    </aside>
-
-    <div class="btn-group">
-        <a href="#" class="btn-p">p200 Single Left</a>
-        <a href="#" class="btn-p">p200 Multi Center</a>
-    </div>
-    <div class="coord">
-        <p>X:0</p><p>Y:0</p><p>Z:0</p>
-    </div>
-</section>
--------------------------------->
 <div class="deck">
     <aside class="jog">
         <h4>Jog X,Y,Z</h4>
@@ -116,15 +94,12 @@ REMOVED LABWARE DROPDOWN
                     <label for="topic">Topic (destination-route):</label>
                     <input type="text" name="topic" id="topic" />
                     <br>
-
                     <label for="type">Type:</label>
                     <input type="text" name="type" id="type" />
                     <br>
-
                     <label for="name">Name (device/hardware?):</label>
                     <input type="text" name="name" id="name" />
                     <br>
-
                     <label for="message">Message: "move_to" in {"move_to":{"X":20}} ----- KEYS IN ""</label>
                     <input type="text" name="message" id="message">
                     </input>
@@ -149,8 +124,8 @@ REMOVED LABWARE DROPDOWN
                             console.log(param);
                         }
 
-                        sendMessage('com.opentrons.' + topic,'',type,name,message,param);
-                        console.log('com.opentrons.' + topic,'',type,name,message,param);
+                        sendMessage('com.opentrons.' + topic, '', type, name, message, param);
+                        console.log('com.opentrons.' + topic, '', type, name, message, param);
 
                     };
                     </script>
@@ -184,7 +159,7 @@ REMOVED LABWARE DROPDOWN
         <div id="byte_content"></div>
     </section>
     <section class="deckmap">
-                <table>
+        <table>
             <thead>
                 <tr>
                     <th colspan="1">Labware</th>
@@ -228,53 +203,21 @@ REMOVED LABWARE DROPDOWN
                 </tr>
             </tbody>
         </table>
-        
     </section>
     <section class="jog">
     </section>
     <section class="deckmap">
-    
-<ul class="currentLabware">
+        <ul class="currentLabware">
             <li class="active"><a>p200 tiprack</a></li>
             <li><a>trash</a></li>
         </ul>
     </section>
 </div>
-<!-- Load File Script - Can't Link Externally yet? -->
+
+{% endblock %} {% block scripts %}
 <script>
-function readBlob() {
-
-    var files = document.getElementById('files').files;
-    if (!files.length) {
-        alert('Please select a file!');
-        return;
-    }
-
-    var file = files[0];
-    var start = 0;
-    var stop = file.size - 1;
-
-    var reader = new FileReader();
-
-    reader.onloadend = function(evt) {
-        if (evt.target.readyState == FileReader.DONE) {
-            document.getElementById('byte_content').textContent = evt.target.result;
-            var upload = evt.target.result;
-            var protocol = JSON.parse(upload);
-            console.log(protocol.deck);
-            //loop through and get 
-            for (var key in protocol.deck) {
-                console.log("Key: " + key);
-            }
-        }
-    };
-
-    var blob = file;
-    reader.readAsBinaryString(blob);
-}
-
 document.getElementById('loadFile').addEventListener('click', function(evt) {
     readBlob();
 }, false);
 </script>
-{% endblock %} {% block scripts %} {% endblock %}
+{% endblock %}

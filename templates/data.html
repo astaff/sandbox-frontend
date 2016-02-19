@@ -1,0 +1,133 @@
+{% extends "/layout.html" %} {% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/walkthrough.css') }}"> {% endblock %} {% block body %}
+<style type="text/css">
+.steps .step {
+    display: none;
+}
+
+.steps .step.active-step {
+    display: block;
+}
+</style>
+<div class="deck">
+    <aside class="step-list">
+        <ul id="step-group">
+            <li class="welcome">Welcome</li>
+            <li class="one">Step 1- Calibrate p200 tiprack</li>
+            <li class="two">Echo steps from Michelle</li>
+            <li class="three">Echo steps from Michelle</li>
+        </ul>
+    </aside>
+    {% raw %}
+    <div id="wizard">
+        <div id="TaskPane">
+            Loading...
+        </div>
+        <script id="welcomeTask-template" type="text/x-handlebars-template">
+            <h2>Welcome to the OT-One Calibration Wizard</h2>
+            <div class="steps step-{{step}}">
+                <div class="step step-hello">
+                    <p>This wizard will guide you step by step through the process of:
+                        <ul>
+                            <li>Loading a Protocol</li>
+                            <li>Calibrating Well Positions</li>
+                            <li>Calibrating Pipettes</li>
+                            <li>Testing Saved Positions</li>
+                        </ul>
+                    </p>
+                    <p>You can always acess this screen menu at any time by clicking the main menu button at the top of the task menu.</p>
+                    <button class="btn" data-toStep="docs">Next</button>
+                </div>
+                <div class="step step-docs">
+                    <h3>If you prefer, online documentation can be found <a href="https://github.com/OpenTrons/otone_docs" target="_blank">here.</a> </h3>
+                    <p>Each task has a navigation bar at the bottom of the screen. Here you can view tips and instructions, perform the current task, or test your saved values. </p>
+
+                    <!-- Link to Info/Jog/Test based on current data -->
+                    <ul class="subnav">
+                        <li><a class="btn"><i class="fa fa-info-circle fa-lg"></i> Tips</a></li>
+                        <li><a class="btn"><i class="fa fa-arrows fa-lg"></i> Jog</a></li>
+                        <li><a class="btn"><i class="fa fa-refresh fa-lg"></i> Test</a></li>
+                    </ul>
+                    <button class="btn" data-toStep="finfo" data-toTask="file">Next</button>
+                </div>
+            </div>
+        </script>
+        <script id="fileTask-template" type="text/x-handlebars-template">
+            <h2>Upload a Protocol File </h2>
+            <div class="steps step-{{step}}">
+                <div class="step step-finfo">
+                    <p>bar: {{bar}}; step: {{step}}</p>
+                    <p>OpenTrons jobs are described in JSON files that the robot reads as instruction set. You download these files from Mix.Bio. You can choose a pre-made JSON document from the Protocol Database that is ready to run, or customize your own in the Protocol Editor. Once you have the protocol you want downloaded, click below to upload to the Setup / Run interface.</p>
+                    <h3>Load Protocol</h3>
+                    <input type="file" name="file" id="files" class="inputfile" />
+                    <button class="btn" id="loadFile">Load</button>
+                    <div id="byte_content"></div>
+
+                    <!-- Next Step generate links based on incoming data -->
+                    <button class="btn" data-toStep="docs" data-toTask="welcome">Back</button>
+                    <button class="btn" data-toStep="cinfo" data-toTask="calibrate">Next</button>
+                </div>
+            </div>
+        </script>
+        <script id="calibrateTask-template" type="text/x-handlebars-template">
+            <h2>Calibrate (labware: {{labware}}; step: {{step}})</h2>
+            <div class="steps step-{{step}}">
+                <div class="step step-cinfo">
+                    <p>The first position you save should be your tip rack. Select that position then jog your robot so that the pipette is hovering directly over the A1 tip of the rack that it will use for the run.</p>
+                    <p>When you think the pipette is well positioned directly above the tip, flip to the "Pipette" section of the interface, select the correct pipette, and hit "pick up tip." The machine will go up and down three times in an attempt to pick up the tip.</p>
+                    <p>NOTE: the distance the machine moves down the Z axis to pick up the tip is defined in the "tip plunge" field in the Pipette definition in the Head section of the JSON OT protocol document.</p>
+                    <!-- Next Step generate links based on incoming data -->
+                    <ul class="subnav">
+                        <li><a class="btn"><i class="fa fa-info-circle fa-lg"></i> Tips</a></li>
+                        <li><a class="btn"><i class="fa fa-arrows fa-lg"></i> Jog</a></li>
+                        <li><a class="btn"><i class="fa fa-refresh fa-lg"></i> Test</a></li>
+                    </ul>
+                </div>
+                <div class="step step-whatever">
+                    This step does whatever.
+                </div>
+                <div class="step step-done">
+                    This is another step, cool.
+                </div>
+            </div>
+        </script>
+        {% endraw %}
+        <script type="text/javascript">
+        var task = new TaskController().setTask('welcome', {
+            step: 'hello',
+            foo: 'FOO'
+        });
+
+        //thinking about prev/next buttons when we have data
+        document.getElementById('TaskPane').addEventListener('click', function(event) {
+            var el = event.target
+            if (el.tagName !== 'BUTTON') return;
+            if (el.id === 'loadFile') {
+                readBlob();
+                return false;
+            }
+            var t;
+            var s;
+            //if changing tasks and step, geet both
+            if (el.hasAttribute("data-toTask")) {
+                t = el.getAttribute('data-toTask');
+                s = el.getAttribute('data-toStep');
+                //worry about dynamic data later, for now hardcoded
+                task.setTask(t, {
+                    bar: 'bar'
+                });
+                task.setStep(s);
+            } else {
+                //just a step, change to next/prev accordingly
+                var s = el.getAttribute('data-toStep');
+                task.setStep(s);
+            }
+
+        });
+
+        task.setStep('hello');
+        labware = ['p200ul-tiprack', 'trash', 'trough'];
+        </script>
+    </div>
+    {% endblock %} {% block scripts %}
+ {% endblock %}

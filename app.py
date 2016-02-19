@@ -12,8 +12,12 @@ def index():
 
 
 @app.route("/wizard")
-def sanbox():
+def sandbox():
 	return render_template("wizard-test.html")
+
+@app.route("/data")
+def data():
+	return render_template("data.html")
 
 @app.route("/calibrate")
 def calibrate():

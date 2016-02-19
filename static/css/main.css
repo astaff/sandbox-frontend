@@ -273,20 +273,3 @@ a.btn-tab:hover {
 .btn-group :last-child {
   border-radius: 0 14px 14px 0;
 }
-
-/* line 138, ../../sass/main.scss */
-#wizard .steps .step {
-  display: none;
-}
-/* line 141, ../../sass/main.scss */
-#wizard .steps.step-one .step-one {
-  display: block;
-}
-/* line 144, ../../sass/main.scss */
-#wizard .steps.step-two .step-two {
-  display: block;
-}
-/* line 147, ../../sass/main.scss */
-#wizard .steps.step-three .step-three {
-  display: block;
-}
