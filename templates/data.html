@@ -41,7 +41,6 @@
                 <div class="step step-docs">
                     <h3>If you prefer, online documentation can be found <a href="https://github.com/OpenTrons/otone_docs" target="_blank">here.</a> </h3>
                     <p>Each task has a navigation bar at the bottom of the screen. Here you can view tips and instructions, perform the current task, or test your saved values. </p>
-
                     <!-- Link to Info/Jog/Test based on current data -->
                     <ul class="subnav">
                         <li><a class="btn"><i class="fa fa-info-circle fa-lg"></i> Tips</a></li>
@@ -62,7 +61,6 @@
                     <input type="file" name="file" id="files" class="inputfile" />
                     <button class="btn" id="loadFile">Load</button>
                     <div id="byte_content"></div>
-
                     <!-- Next Step generate links based on incoming data -->
                     <button class="btn" data-toStep="docs" data-toTask="welcome">Back</button>
                     <button class="btn" data-toStep="cinfo" data-toTask="calibrate">Next</button>
@@ -70,12 +68,13 @@
             </div>
         </script>
         <script id="calibrateTask-template" type="text/x-handlebars-template">
-            <h2>Calibrate (labware: {{labware}}; step: {{step}})</h2>
+            <h2>Calibrate to Well A:1 ith Left Pipette</h2>
             <div class="steps step-{{step}}">
                 <div class="step step-cinfo">
                     <p>The first position you save should be your tip rack. Select that position then jog your robot so that the pipette is hovering directly over the A1 tip of the rack that it will use for the run.</p>
                     <p>When you think the pipette is well positioned directly above the tip, flip to the "Pipette" section of the interface, select the correct pipette, and hit "pick up tip." The machine will go up and down three times in an attempt to pick up the tip.</p>
                     <p>NOTE: the distance the machine moves down the Z axis to pick up the tip is defined in the "tip plunge" field in the Pipette definition in the Head section of the JSON OT protocol document.</p>
+                    (labware: {{labware}}; step: {{step}})
                     <!-- Next Step generate links based on incoming data -->
                     <ul class="subnav">
                         <li><a class="btn"><i class="fa fa-info-circle fa-lg"></i> Tips</a></li>
@@ -83,8 +82,63 @@
                         <li><a class="btn"><i class="fa fa-refresh fa-lg"></i> Test</a></li>
                     </ul>
                 </div>
-                <div class="step step-whatever">
-                    This step does whatever.
+                <div class="step step-jog">
+                    <div class="jog">
+                        <h4>Jog X,Y,Z</h4>
+                        <table cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td></td>
+                                <td><a href="#" class="btn" onclick="sendMessage('com.opentrons.driver',driver_id,'command','smoothie','move_to',{X:10});"><i class="fa fa-arrow-up fa-lg"></i></a></td>
+                                <td></td>
+                                <td class="spacer"></td>
+                                <td><a href="#" class="btn btn-z"><i class="fa fa-arrow-up fa-lg"></i></a></td>
+                            </tr>
+                            <tr>
+                                <td class="pull-right"> <a href="#" class="btn "><i class="fa fa-arrow-left fa-lg"></i></a></td>
+                                <td>&nbsp;</td>
+                                <td class="pull-left"><a href="#" class="btn "><i class="fa fa-arrow-right fa-lg"></i></a></td>
+                                <td class="spacer"></td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><a href="#" class="btn"><i class="fa fa-arrow-down fa-lg"></i></a></td>
+                                <td>&nbsp;</td>
+                                <td class="spacer"></td>
+                                <td><a href="#" class="btn btn-z"><i class="fa fa-arrow-down fa-lg"></i></a></td>
+                            </tr>
+                        </table>
+                        <h4>Select Increment [mm]</h4>
+                        <div class="btn-group">
+                            <a href="#" class="btn btn-inc">100</a>
+                            <a href="#" class="btn btn-inc">50</a>
+                            <a href="#" class="btn btn-inc">10</a>
+                            <a href="#" class="btn btn-inc">1.0</a>
+                            <a href="#" class="btn btn-inc">0.5</a>
+                            <a href="#" class="btn btn-inc">0.1</a>
+                        </div>
+                        <div class="btn-group">
+                            <a href="#" class="btn btn-inc">Slot Width</a>
+                            <a href="#" class="btn btn-inc">Slot Height</a>
+                        </div>
+                        
+                    </div>
+                    <div class="jog">
+                        
+                    </div>
+
+                    <div class="jog-info">
+
+                        <h4>Current Container Name</h4>
+                        <p>X:0 Y:0 Z:0</p>
+
+                    </div>
+                    <!-- Link to Info/Jog/Test based on current data -->
+                    <ul class="subnav">
+                        <li><a class="btn"><i class="fa fa-info-circle fa-lg"></i> Tips</a></li>
+                        <li><a class="btn"><i class="fa fa-arrows fa-lg"></i> Jog</a></li>
+                        <li><a class="btn"><i class="fa fa-refresh fa-lg"></i> Test</a></li>
+                    </ul>
                 </div>
                 <div class="step step-done">
                     This is another step, cool.
@@ -93,8 +147,8 @@
         </script>
         {% endraw %}
         <script type="text/javascript">
-        var task = new TaskController().setTask('welcome', {
-            step: 'hello',
+        var task = new TaskController().setTask('calibrate', {
+            step: 'jog',
             foo: 'FOO'
         });
 
@@ -113,9 +167,7 @@
                 t = el.getAttribute('data-toTask');
                 s = el.getAttribute('data-toStep');
                 //worry about dynamic data later, for now hardcoded
-                task.setTask(t, {
-                    bar: 'bar'
-                });
+                task.setTask(t, {});
                 task.setStep(s);
             } else {
                 //just a step, change to next/prev accordingly
@@ -125,9 +177,8 @@
 
         });
 
-        task.setStep('hello');
+        task.setStep('jog');
         labware = ['p200ul-tiprack', 'trash', 'trough'];
         </script>
     </div>
-    {% endblock %} {% block scripts %}
- {% endblock %}
+    {% endblock %} {% block scripts %} {% endblock %}

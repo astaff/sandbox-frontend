@@ -39,122 +39,140 @@
     }
 }
 
-.jog {
+#wizard {
     @include grid-col(6);
-    table {
-        width: 100%;
-        display: block;
-        td {
-            line-height: $baseline*1.75;
-            .spacer {
-                width: $basesize*2;
+    min-height: 80vh;
+    position: relative;
+    a {
+        color: $primary-pink;
+    }
+    h2{
+
+    }
+    /*********************
+    SUBNAVIGATION
+    ********************/
+    .subnav {
+        @include grid-row();      
+        list-style: none;
+        position:absolute; 
+        bottom:0;
+        text-align: center;
+            li {
+                position:relative;
+                display: inline-block;
+                @include grid-col(4);
+                
+                color: white;
+                line-height: $baseline;
+
+                a.btn {
+                    display: block;
+                    border-radius: 0;
+                    background-color: white;
+                    transition: background-color 1s;
+                    width:100%;
+
+                }
+            }
+
+    }
+    /*********************
+    JOG CONTROLS
+    ********************/
+    .jog {
+        @include grid-col(6);
+        table {
+            width: 100%;
+            display: block;
+            td {
+                line-height: $baseline*1.75;
+                .spacer {
+                    width: $basesize*2;
+                }
             }
         }
-    }
-    .btn {
-        padding: $basesize*0.75;
-        border-radius: $basesize/2;
-    }
-    .pull-right {
-        transform: translateX($basesize*2);
-    }
-    .pull-left {
-        transform: translateX(-1*$basesize*2);
-    }
-    .btn-z {
-        background-color: $button-green;
-        border-radius: $basesize/2;
-        -webkit-transition: background-color 0.1s;
-        /* Safari */
-        transition: background-color 0.1s;
-    }
-    .btn-z:hover {
-        background-color: lighten($button-green, 10%);
-    }
-    p {
-        text-align: center;
-        padding-top: $baseline;
-        font-size: $basesize*1.25;
-    }
-    hr {
-        border-color: lighten($primary-blue, 40%);
-    }
-    .btn-group {
-        text-align: center;
-        font-size: $basesize;
-        line-height: $baseline*1.5;
-        margin: $baseline/2 0;
-        .btn-inc {
-            line-height: $baseline;
-            border-radius: 0;
-            padding: $basesize*0.5;
-            margin: -1px;
+        a {
+            color: white;
         }
-        //////////////////////////////////////
-        //PIPETTE BUTTONS
-        //////////////////////////////////////
-        .btn-pipette {
+        .btn {
+            padding: $basesize*0.75;
+            border-radius: $basesize/2;
+        }
+        .pull-right {
+            transform: translateX($basesize*2);
+        }
+        .pull-left {
+            transform: translateX(-1*$basesize*2);
+        }
+        .btn-z {
             background-color: $button-green;
             border-radius: $basesize/2;
             -webkit-transition: background-color 0.1s;
             /* Safari */
             transition: background-color 0.1s;
-            height: $baseline*1.5;
-            padding: $basesize*0.5;
-            &:hover {
-                background-color: lighten($button-green, 10%);
-            }
-            &:active {
-                background-color: darken($button-green, 10%);
-            }
         }
-        :first-child {
-            border-radius: $basesize 0 0 $basesize;
+        .btn-z:hover {
+            background-color: lighten($button-green, 10%);
         }
-        :last-child {
-            border-radius: 0 $basesize $basesize 0;
-        }
-    }
-    .jog-pipette {
-        text-align: center;
-        .left-pipette,
-        .right-pipette {
-            width: 40%;
-            display: inline-block;
-            line-height: $baseline*2;
-        }
-        h4 {
-            text-align: left;
-        }
-    }
-}
-
-#wizard {
-    @include grid-col(6);
-    min-height: 75vh;
-    position: relative;
-    a {
-        color: $primary-pink;
-    }
-    .subnav{
-        @include grid-row();
-        list-style: none;
-
-        li{
-            display:inline-block;
-            @include grid-col(4);
+        p {
             text-align: center;
-            color:white;
-            line-height: $baseline;
-     
-            a.btn{
-                display:block;
+            padding-top: $baseline;
+            font-size: $basesize*1.25;
+        }
+        hr {
+            border-color: lighten($primary-blue, 40%);
+        }
+        .btn-group {
+            text-align: center;
+            font-size: $basesize;
+            line-height: $baseline*1.5;
+            margin: $baseline/2 0;
+            .btn-inc {
+                line-height: $baseline;
                 border-radius: 0;
-                
-                background-color:white;
-                transition: background-color 1s;
-
+                padding: $basesize*0.5;
+                margin: -1px;
+            }
+            //////////////////////////////////////
+            //PIPETTE BUTTONS
+            //////////////////////////////////////
+            .btn-pipette {
+                background-color: $button-green;
+                border-radius: $basesize/2;
+                -webkit-transition: background-color 0.1s;
+                /* Safari */
+                transition: background-color 0.1s;
+                height: $baseline*1.5;
+                padding: $basesize*0.5;
+                &:hover {
+                    background-color: lighten($button-green, 10%);
+                }
+                &:active {
+                    background-color: darken($button-green, 10%);
+                }
+            }
+            :first-child {
+                border-radius: $basesize 0 0 $basesize;
+            }
+            :last-child {
+                border-radius: 0 $basesize $basesize 0;
             }
         }
+        .jog-pipette {
+            text-align: center;
+            .left-pipette,
+            .right-pipette {
+                width: 40%;
+                display: inline-block;
+                line-height: $baseline*2;
+            }
+            h4 {
+                text-align: left;
+            }
+        }
+    }
+    .jog-info{
+        @include grid-col(6);
     }
 }
