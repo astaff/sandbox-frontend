@@ -123,7 +123,7 @@ function sendMessage (topic,to,sessionID,type,name,message,param) {
 		var msg = {
 			'to':to,
 			'from':id,
-			'sessionID':id
+			'sessionID':id,
 			'type':type,
 		};
 		var dat = {'name':name};
