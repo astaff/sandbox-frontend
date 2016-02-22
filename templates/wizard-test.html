@@ -16,8 +16,6 @@
 	<div id="wizard">
 		not set
 	</div>
-
-
 </div>
 
 <style>
@@ -64,7 +62,7 @@
 function Wizard(taskType, data) {
 	// Task type must have template called '<type>-task' as a
 	// script with type="logical/template".
-	var wizard = Prismo.createView(taskType+'-task', data);
+	var wizard = logical.(taskType+'-task', data);
 	this.view = wizard.attach('#wizard');
 	this.view.set(data);
 }

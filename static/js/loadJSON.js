@@ -1,3 +1,8 @@
+
+ console.log('loaded');   
+
+
+
 function readBlob() {
 
     var files = document.getElementById('files').files;
@@ -25,6 +30,4 @@ function readBlob() {
     reader.readAsBinaryString(blob);
 }
 
-document.getElementById('loadFile').addEventListener('click', function(evt) {
-    readBlob();
-}, false);
+
