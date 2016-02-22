@@ -74,9 +74,9 @@ window.addEventListener ('load', function() {
 
 		//connection1.session.publish('com.opentrons.driver_handshake', [true]);
 		if (id=="") {
-			sendMessage('com.opentrons.driver_handshake',driver_id,'handshake','driver','extend','');
+			sendMessage('com.opentrons.driver_handshake',driver_id,id,'handshake','driver','extend','');
 		} else {
-			sendMessage('com.opentrons.driver_handshake','','handshake','driver','extend','');
+			sendMessage('com.opentrons.driver_handshake',id,id,'handshake','driver','extend','');
 		}
 		
 		connection1.session.subscribe('com.opentrons.frontend', function(str) {
@@ -111,10 +111,11 @@ window.addEventListener ('load', function() {
 
 /* Send messages function */
 
-function sendMessage (topic,to,type,name,message,param) {
+function sendMessage (topic,to,sessionID,type,name,message,param) {
 	try{
 		console.log('topic: ',topic);
 		console.log('to: ',to);
+		console.log('sessionID: ',sessionID);
 		console.log('type: ',type);
 		console.log('name: ',name);
 		console.log('message: ',message);
@@ -122,6 +123,7 @@ function sendMessage (topic,to,type,name,message,param) {
 		var msg = {
 			'to':to,
 			'from':id,
+			'sessionID':id
 			'type':type,
 		};
 		var dat = {'name':name};
