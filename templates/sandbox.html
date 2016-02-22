@@ -100,7 +100,7 @@
                     <label for="name">Name (device/hardware?):</label>
                     <input type="text" name="name" id="name" />
                     <br>
-                    <label for="message">Message: "move_to" in {"move_to":{"X":20}} ----- KEYS IN ""</label>
+                    <label for="message">Message: move_to in {"move_to":{"X":20}} ----- KEYS IN ""</label>
                     <input type="text" name="message" id="message">
                     </input>
                     <br>
@@ -124,8 +124,8 @@
                             console.log(param);
                         }
 
-                        sendMessage('com.opentrons.' + topic, '', type, name, message, param);
-                        console.log('com.opentrons.' + topic, '', type, name, message, param);
+                        sendMessage('com.opentrons.' + topic, '', id, type, name, message, param);
+                        console.log('com.opentrons.' + topic, '', id, type, name, message, param);
 
                     };
                     </script>
