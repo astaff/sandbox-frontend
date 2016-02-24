@@ -56,12 +56,21 @@ var socketHandler = {
 					});
 					if (name == 'driver') {
 						sendMessage('com.opentrons.driver_handshake',driver_id,session_id,'handshake','driver','shake','');
+						//sendMessage('com.opentrons.driver_handshake',driver_id,session_id,'handshake','driver','extend','');
+						if (labware_id == "") sendMessage('com.opentrons.labware_handshake',labware_id,session_id,'handshake','labware','extend','');
+						if (bootstrapper_id == "") sendMessage('com.opentrons.bootstrapper_handshake',bootstrapper_id,session_id,'handshake','bootstrapper','extend','');
 					}
 					if (name == 'labware') {
 						sendMessage('com.opentrons.labware_handshake',labware_id,session_id,'handshake','labware','shake','');
+						if (driver_id == "") sendMessage('com.opentrons.driver_handshake',driver_id,session_id,'handshake','driver','extend','');
+						//sendMessage('com.opentrons.labware_handshake',labware_id,session_id,'handshake','labware','extend','');
+						if (bootstrapper_id == "") sendMessage('com.opentrons.bootstrapper_handshake',bootstrapper_id,session_id,'handshake','bootstrapper','extend','');
 					}
 					if (name == 'bootstrapper') {
 						sendMessage('com.opentrons.bootstrapper_handshake',bootstrapper_id,session_id,'handshake','bootstrapper','shake','');
+						if (driver_id == "") sendMessage('com.opentrons.driver_handshake',driver_id,session_id,'handshake','driver','extend','');
+						if (labware_id == "") sendMessage('com.opentrons.labware_handshake',labware_id,session_id,'handshake','labware','extend','');
+						//sendMessage('com.opentrons.bootstrapper_handshake',bootstrapper_id,session_id,'handshake','bootstrapper','extend','');
 					}
 					
 				}
