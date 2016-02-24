@@ -7,18 +7,29 @@ to for each "configuration tab". The methods here are the "core" methods.
 var socketHandler = {
 	'handshake' : (function(){
 		return function(data) {
+			console.log(data);
 			if (data.data.message.hasOwnProperty('result')) {
 				if (data.data.message.result == 'success') {
-					console.log('data.to: ',data.to);
-					console.log('data.from: ',data.from);
-					console.log('data.type: ',data.type);
-					console.log('data.data: ',data.data);
-					id = data.to;
-					driver_id = data.from;
-					setCookie('otone-client-id',id,21);
-					setCookie('otone-driver-id',driver_id,21);
-					id_url_topic = 'com.opentrons.'+id;
-					console.log('Seeting up subscribe for url topic ',id_url_topic);
+					if (session_id == "") {
+						session_id = data.sessionID;
+						setCookie('session_id',session_id,21);
+					}
+					name = data.data.name;
+					if (name == 'driver') {
+						driver_id = data.from;
+						setCookie('data_id',driver_id,21);
+					}
+					if (name == 'labware') {
+						labware_id = data.from;
+						setCookie('labware_id',labware_id,21);
+					}
+					if (name == 'bootstrapper') {
+						bootstrapper_id = data.from;
+						setCookie('bootstrapper_id',bootstrapper_id,21);
+					}
+
+					id_url_topic = 'com.opentrons.'+session_id;
+					console.log('Setting up subscribe for NEW url topic ',id_url_topic);
 					globalConnection1.session.subscribe(id_url_topic, function(str) {
 						try{
 							console.log('message on '+id_url_topic+': '+str);
@@ -43,7 +54,16 @@ var socketHandler = {
 							console.log(e.message);
 						}
 					});
-					sendMessage('com.opentrons.driver_handshake',driver_id,id,'handshake','driver','shake','');
+					if (name == 'driver') {
+						sendMessage('com.opentrons.driver_handshake',driver_id,session_id,'handshake','driver','shake','');
+					}
+					if (name == 'labware') {
+						sendMessage('com.opentrons.labware_handshake',labware_id,session_id,'handshake','labware','shake','');
+					}
+					if (name == 'bootstrapper') {
+						sendMessage('com.opentrons.bootstrapper_handshake',bootstrapper_id,session_id,'handshake','bootstrapper','shake','');
+					}
+					
 				}
 			}
 		}

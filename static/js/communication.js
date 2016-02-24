@@ -13,8 +13,10 @@ aubahn.min.js required...
 /* GLOBAL VARIABLES */
 
 var globalConnection1;
-var id;
-var driver_id;
+var session_id = "";
+var driver_id = "";
+var labware_id = "";
+var bootstrapper_id = "";
 
 
 /* Cookie Helpers */
@@ -39,8 +41,10 @@ function setCookie(cname, cvalue, exdays) {
 /* Initialize communication */
 
 window.addEventListener ('load', function() {
-	id = getCookie('otone-client-id');
-	driver_id = getCookie('otone-driver-id');
+	session_id = getCookie('session_id');
+	driver_id = getCookie('driver_id');
+	labware_id = getCookie('labware_id');
+	bootstrapper_id = getCookie('bootstrapper_id');
 	// Initialize the server/router url based off where the file came from
 	var wsuri;
  	if (document.location.origin == "file://") {
@@ -73,11 +77,14 @@ window.addEventListener ('load', function() {
 		// javascript to the other clients (ie python)
 
 		//connection1.session.publish('com.opentrons.driver_handshake', [true]);
-		if (id=="") {
-			sendMessage('com.opentrons.driver_handshake',driver_id,id,'handshake','driver','extend','');
+		if (session_id=="") {
+			sendMessage('com.opentrons.driver_handshake',driver_id,session_id,'handshake','driver','extend','');
 		} else {
-			sendMessage('com.opentrons.driver_handshake',id,id,'handshake','driver','extend','');
-			var id_url_topic = 'com.opentrons.'+id
+			sendMessage('com.opentrons.driver_handshake',driver_id,session_id,'handshake','driver','extend','');
+			sendMessage('com.opentrons.labware_handshake',labware_id,session_id,'handshake','labware','extend','');
+			sendMessage('com.opentrons.bootstrapper_handshake',bootstrapper_id,session_id,'handshake','bootstrapper','extend','');
+
+			var id_url_topic = 'com.opentrons.'+session_id;
 			connection1.session.subscribe(id_url_topic, function(str){
 				try{
 					console.log('message on '+id_url_topic+': '+str);
@@ -147,9 +154,9 @@ function sendMessage (topic,to,sessionID,type,name,message,param) {
 		console.log('param: ',param);
 		var msg = {
 			'to':to,
-			'from':id,
+			'from':session_id,
 			'sessionID':sessionID,
-			'type':type,
+			'type':type
 		};
 		var dat = {'name':name};
 		var mp = {};
