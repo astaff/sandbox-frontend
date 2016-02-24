@@ -77,7 +77,8 @@ window.addEventListener ('load', function() {
 			sendMessage('com.opentrons.driver_handshake',driver_id,id,'handshake','driver','extend','');
 		} else {
 			sendMessage('com.opentrons.driver_handshake',id,id,'handshake','driver','extend','');
-			connection1.session.subscribe('com.opentrons.'+id, function(str){
+			var id_url_topic = 'com.opentrons.'+id
+			connection1.session.subscribe(id_url_topic, function(str){
 				try{
 					console.log('message on '+id_url_topic+': '+str);
 					var msg = JSON.parse(str);
