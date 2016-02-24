@@ -25,7 +25,7 @@
         </div>
         <script id="welcomeTask-template" type="text/x-handlebars-template">
             <h2>Welcome to the OT-One Calibration Wizard</h2>
-            <div class="steps step-{{step}}">
+            <div class="steps">
                 <div class="step step-hello">
                     <p>This wizard will guide you step by step through the process of:
                         <ul>
@@ -36,7 +36,8 @@
                         </ul>
                     </p>
                     <p>You can always acess this screen menu at any time by clicking the main menu button at the top of the task menu.</p>
-                    <button class="btn" data-toStep="docs">Next</button>
+                    <a href="#welcome/docs">Next</a>
+                    
                 </div>
                 <div class="step step-docs">
                     <h3>If you prefer, online documentation can be found <a href="https://github.com/OpenTrons/otone_docs" target="_blank">here.</a> </h3>
@@ -47,13 +48,14 @@
                         <li><a class="btn"><i class="fa fa-arrows fa-lg"></i> Jog</a></li>
                         <li><a class="btn"><i class="fa fa-refresh fa-lg"></i> Test</a></li>
                     </ul>
-                    <button class="btn" data-toStep="finfo" data-toTask="file">Next</button>
+                    <a href="#welcome/hello">Prev</a> | 
+                    <a href="#file/finfo">Next</a>
                 </div>
             </div>
         </script>
         <script id="fileTask-template" type="text/x-handlebars-template">
             <h2>Upload a Protocol File </h2>
-            <div class="steps step-{{step}}">
+            <div class="steps">
                 <div class="step step-finfo">
                     <p>bar: {{bar}}; step: {{step}}</p>
                     <p>OpenTrons jobs are described in JSON files that the robot reads as instruction set. You download these files from Mix.Bio. You can choose a pre-made JSON document from the Protocol Database that is ready to run, or customize your own in the Protocol Editor. Once you have the protocol you want downloaded, click below to upload to the Setup / Run interface.</p>
@@ -61,16 +63,14 @@
                     <input type="file" name="file" id="files" class="inputfile" />
                     <button class="btn" id="loadFile">Load</button>
                     <div id="byte_content"></div>
-                    <!-- Next Step generate links based on incoming data -->
-                    <button class="btn" data-toStep="docs" data-toTask="welcome">Back</button>
-                    <button class="btn" data-toStep="cinfo" data-toTask="calibrate">Next</button>
+                   
                 </div>
             </div>
         </script>
         <script id="calibrateTask-template" type="text/x-handlebars-template">
             <h2>Calibrate to Well A:1 ith Left Pipette</h2>
-            <div class="steps step-{{step}}">
-                <div class="step step-cinfo">
+            <div class="steps">
+                <div class="step step-info">
                     <p>The first position you save should be your tip rack. Select that position then jog your robot so that the pipette is hovering directly over the A1 tip of the rack that it will use for the run.</p>
                     <p>When you think the pipette is well positioned directly above the tip, flip to the "Pipette" section of the interface, select the correct pipette, and hit "pick up tip." The machine will go up and down three times in an attempt to pick up the tip.</p>
                     <p>NOTE: the distance the machine moves down the Z axis to pick up the tip is defined in the "tip plunge" field in the Pipette definition in the Head section of the JSON OT protocol document.</p>
@@ -121,17 +121,12 @@
                             <a href="#" class="btn btn-inc">Slot Width</a>
                             <a href="#" class="btn btn-inc">Slot Height</a>
                         </div>
-                        
                     </div>
                     <div class="jog">
-                        
                     </div>
-
                     <div class="jog-info">
-
                         <h4>Current Container Name</h4>
                         <p>X:0 Y:0 Z:0</p>
-
                     </div>
                     <!-- Link to Info/Jog/Test based on current data -->
                     <ul class="subnav">
@@ -147,38 +142,30 @@
         </script>
         {% endraw %}
         <script type="text/javascript">
-        var task = new TaskController().setTask('calibrate', {
-            step: 'jog',
+        var task = new TaskController().setTask('welcome', {
+            step: 'hello',
             foo: 'FOO'
         });
 
-        //thinking about prev/next buttons when we have data
-        document.getElementById('TaskPane').addEventListener('click', function(event) {
-            var el = event.target
-            if (el.tagName !== 'BUTTON') return;
-            if (el.id === 'loadFile') {
-                readBlob();
-                return false;
-            }
-            var t;
-            var s;
-            //if changing tasks and step, geet both
-            if (el.hasAttribute("data-toTask")) {
-                t = el.getAttribute('data-toTask');
-                s = el.getAttribute('data-toStep');
-                //worry about dynamic data later, for now hardcoded
-                task.setTask(t, {});
-                task.setStep(s);
-            } else {
-                //just a step, change to next/prev accordingly
-                var s = el.getAttribute('data-toStep');
-                task.setStep(s);
+        task.setStep('hello');
+
+
+        function locationHashChanged() {
+            var url = location.hash;
+            if (new RegExp('#').test(url)) {
+                url = url.replace('#', '');
+                 var paths = url.split( '/' );
+                 var t = paths[0];
+                 var s = paths[1];
+                 console.log(s);
+                 task.setTask(t, {step:s});
+                 task.setStep(s);
             }
 
-        });
+        }
 
-        task.setStep('jog');
-        labware = ['p200ul-tiprack', 'trash', 'trough'];
+        window.onhashchange = locationHashChanged;
+
         </script>
     </div>
     {% endblock %} {% block scripts %} {% endblock %}

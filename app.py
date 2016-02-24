@@ -23,8 +23,6 @@ def data():
 def calibrate():
 	return render_template("calibrate.html")
 
-
-
 @app.route('/hello')
 def hello_world():
     print('whatup backend?')

@@ -1,20 +1,17 @@
-function Task(taskType, data) {
+function Task(taskType) {
     var template = document.getElementById(taskType + 'Task-template').innerHTML;
     this.template = Handlebars.compile(template);
     this.taskName = taskType;
-    this._data = data || {};
-    this.step = this._data.step || 'info' ;
-
+    this._data = {};
+    this.step = 'info';
 }
 
 Task.prototype = {
 
     render: function() {
+        if (!this.container) return;
         var html = this.template(this._data);
         this.container.innerHTML = html;
-        console.log(this._data);
-        this._data.step = this.step;
-        this.setStep(this.step);
     },
 
     attach: function(containerId) {
@@ -28,17 +25,16 @@ Task.prototype = {
 
     setData: function(obj) {
         for (var k in obj) {
-            //if (!obj.hasOwnProperty(k)) continue; //nohax
+            if (!obj.hasOwnProperty(k)) return; //nohax
             this._data[k] = obj[k];
         }
-        //console.log(this._data);
         this.render();
     },
 
-    
-
     setStep: function(stepName) {
+        this.render();
         this.step = stepName;
+        this._data.step = stepName;
         var active = this.container.getElementsByClassName('active-step')[0];
         if (active) {
             active.classList.remove('active-step');
@@ -47,7 +43,7 @@ Task.prototype = {
         if (current) {
             current.classList.add('active-step');
         } else {
-            console.log("Step for task "+this.taskName+" not found ("+stepName+")");
+            throw("Step for task "+this.taskName+" not found ("+stepName+")");
         }
     }
 
@@ -72,11 +68,12 @@ TaskController.prototype = {
     },
 
     setTask: function(name, data, step) {
-        data = data || {};
-        data.step = step || 'info';
         this.currentTask = this._tasks[name];
+        this.currentTask.setData(data);
+        if (data) {
+            this.currentTask.setData(data);
+        }
         this.currentTask.attach('TaskPane');
-        this.setData(data);
         return this;
     },
 
