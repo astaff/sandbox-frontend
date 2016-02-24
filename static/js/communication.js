@@ -77,6 +77,30 @@ window.addEventListener ('load', function() {
 			sendMessage('com.opentrons.driver_handshake',driver_id,id,'handshake','driver','extend','');
 		} else {
 			sendMessage('com.opentrons.driver_handshake',id,id,'handshake','driver','extend','');
+			connection1.session.subscribe('com.opentrons.'+id, function(str){
+				try{
+					console.log('message on '+id_url_topic+': '+str);
+					var msg = JSON.parse(str);
+					// TODO: add socketHandler here
+					/* add socketHandler here */
+
+					var msg = JSON.parse(str);
+	        		//if(msg.type && socketHandler[msg.type]) socketHandler[msg.type](msg.data);
+	        		//
+	        		// socketHandler format is no longer {'type': ... , 'data': ... }
+	        		// now it's {'name' , '' } ... TODO: run a test to confirm format and then finish this
+
+					if (msg.type) {
+						console.log('socketHandler will be called here');
+						if (socketHandler[msg.type]) socketHandler[msg.type](msg);
+					} else {
+						console.log('error, msg missing type');
+					}
+				} catch(e) {
+					console.log('error handling message');
+					console.log(e.message);
+				}
+			});
 		}
 		
 		connection1.session.subscribe('com.opentrons.frontend', function(str) {

@@ -18,6 +18,7 @@ var socketHandler = {
 					setCookie('otone-client-id',id,21);
 					setCookie('otone-driver-id',driver_id,21);
 					id_url_topic = 'com.opentrons.'+id;
+					console.log('Seeting up subscribe for url topic ',id_url_topic);
 					globalConnection1.session.subscribe(id_url_topic, function(str) {
 						try{
 							console.log('message on '+id_url_topic+': '+str);
