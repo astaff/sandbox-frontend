@@ -1,7 +1,4 @@
-
- console.log('loaded');   
-
-
+console.log('loaded loadJSON');
 
 function readBlob() {
 

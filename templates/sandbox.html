@@ -124,8 +124,8 @@
                             console.log(param);
                         }
 
-                        sendMessage('com.opentrons.' + topic, '', id, type, name, message, param);
-                        console.log('com.opentrons.' + topic, '', id, type, name, message, param);
+                        sendMessage('com.opentrons.' + topic, '', session_id, type, name, message, param);
+                        console.log('com.opentrons.' + topic, '', session_id, type, name, message, param);
 
                     };
                     </script>
@@ -155,7 +155,7 @@
     <section class="jog">
         <h3>Load JSON</h3>
         <input type="file" name="file" id="files" class="inputfile" />
-        <button class="btn" id="loadFile">Load</button>
+        <button class="btn" id="loadFile" onclick="readBlob();">Load</button>
         <div id="byte_content"></div>
     </section>
     <section class="deckmap">
@@ -213,11 +213,35 @@
         </ul>
     </section>
 </div>
-
 {% endblock %} {% block scripts %}
 <script>
-document.getElementById('loadFile').addEventListener('click', function(evt) {
-    readBlob();
-}, false);
+function readBlob() {
+
+    var files = document.getElementById('files').files;
+    if (!files.length) {
+        alert('Please select a file!');
+        return;
+    }
+
+    var file = files[0];
+    var start = 0;
+    var stop = file.size - 1;
+
+    var reader = new FileReader();
+
+    reader.onloadend = function(evt) {
+        if (evt.target.readyState == FileReader.DONE) {
+            document.getElementById('byte_content').textContent = evt.target.result;
+            var upload = evt.target.result;
+            var protocol = JSON.parse(upload);
+            console.log(protocol);
+        }
+    };
+
+    var blob = file;
+    reader.readAsBinaryString(blob);
+}
+
+
 </script>
 {% endblock %}
