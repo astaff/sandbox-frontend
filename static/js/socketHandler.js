@@ -78,6 +78,20 @@ var socketHandler = {
 					}
 					
 				}
+				if (data.data.message.result == 'already_connected') {
+					if (name == 'driver') {
+						driver_id = data.from;
+						setCookie('driver_id',driver_id,21);
+					}
+					if (name == 'labware') {
+						labware_id = data.from;
+						setCookie('labware_id',labware_id,21);
+					}
+					if (name == 'bootstrapper') {
+						bootstrapper_id = data.from;
+						setCookie('bootstrapper_id',bootstrapper_id,21);
+					}
+				}
 			}
 		}
 	})(),
