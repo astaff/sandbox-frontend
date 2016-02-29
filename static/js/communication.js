@@ -89,15 +89,16 @@ window.addEventListener ('load', function() {
 
 		//connection1.session.publish('com.opentrons.driver_handshake', [true]);
 		if (session_id=="") {
-			sendMessage('com.opentrons.driver_handshake',driver_id,session_id,'handshake','driver','extend','');
 			handshake_flow.driver = true;
+			sendMessage('com.opentrons.driver_handshake',driver_id,session_id,'handshake','driver','extend','');
 		} else {
-			sendMessage('com.opentrons.driver_handshake',driver_id,session_id,'handshake','driver','extend','');
 			handshake_flow.driver = true;
-			sendMessage('com.opentrons.labware_handshake',labware_id,session_id,'handshake','labware','extend','');
 			handshake_flow.labware = true;
-			sendMessage('com.opentrons.bootstrapper_handshake',bootstrapper_id,session_id,'handshake','bootstrapper','extend','');
 			handshake_flow.bootstrapper = true;
+			sendMessage('com.opentrons.driver_handshake',driver_id,session_id,'handshake','driver','extend','');
+			sendMessage('com.opentrons.labware_handshake',labware_id,session_id,'handshake','labware','extend','');
+			sendMessage('com.opentrons.bootstrapper_handshake',bootstrapper_id,session_id,'handshake','bootstrapper','extend','');
+			
 
 			var id_url_topic = 'com.opentrons.'+session_id;
 			connection1.session.subscribe(id_url_topic, function(str){
