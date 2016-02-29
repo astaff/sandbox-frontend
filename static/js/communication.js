@@ -18,6 +18,11 @@ var driver_id = "";
 var labware_id = "";
 var bootstrapper_id = "";
 
+var handshake_flow = {
+	'driver':false,
+	'labware':false,
+	'bootstrapper':false
+};
 
 /* Cookie Helpers */
 function getCookie(cname) {
@@ -85,10 +90,14 @@ window.addEventListener ('load', function() {
 		//connection1.session.publish('com.opentrons.driver_handshake', [true]);
 		if (session_id=="") {
 			sendMessage('com.opentrons.driver_handshake',driver_id,session_id,'handshake','driver','extend','');
+			handshake_flow.driver = true;
 		} else {
 			sendMessage('com.opentrons.driver_handshake',driver_id,session_id,'handshake','driver','extend','');
+			handshake_flow.driver = true;
 			sendMessage('com.opentrons.labware_handshake',labware_id,session_id,'handshake','labware','extend','');
+			handshake_flow.labware = true;
 			sendMessage('com.opentrons.bootstrapper_handshake',bootstrapper_id,session_id,'handshake','bootstrapper','extend','');
+			handshake_flow.bootstrapper = true;
 
 			var id_url_topic = 'com.opentrons.'+session_id;
 			connection1.session.subscribe(id_url_topic, function(str){
@@ -151,7 +160,7 @@ window.addEventListener ('load', function() {
 
 function sendMessage (topic,to,sessionID,type,name,message,param) {
 	try{
-		console.log('Sending a message:')
+		console.log('sendMessage called:')
 		console.log('\ttopic: ',topic);
 		console.log('\tto: ',to);
 		console.log('\tsessionID: ',sessionID);

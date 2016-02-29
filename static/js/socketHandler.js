@@ -7,6 +7,7 @@ to for each "configuration tab". The methods here are the "core" methods.
 var socketHandler = {
 	'handshake' : (function(){
 		return function(data) {
+			console.log('socketHandler.handshake...')
 			console.log(data);
 			if (data.data.message.hasOwnProperty('result')) {
 				if (data.data.message.result == 'success') {
@@ -57,20 +58,23 @@ var socketHandler = {
 					if (name == 'driver') {
 						sendMessage('com.opentrons.driver_handshake',driver_id,session_id,'handshake','driver','shake','');
 						//sendMessage('com.opentrons.driver_handshake',driver_id,session_id,'handshake','driver','extend','');
-						if (labware_id == "") sendMessage('com.opentrons.labware_handshake',labware_id,session_id,'handshake','labware','extend','');
-						if (bootstrapper_id == "") sendMessage('com.opentrons.bootstrapper_handshake',bootstrapper_id,session_id,'handshake','bootstrapper','extend','');
+						if (handshake_flow.labware == false) sendMessage('com.opentrons.labware_handshake',labware_id,session_id,'handshake','labware','extend','');
+						if (handshake_flow.bootstrapper == false) sendMessage('com.opentrons.bootstrapper_handshake',bootstrapper_id,session_id,'handshake','bootstrapper','extend','');
+						handshake_flow.driver == false;
 					}
 					if (name == 'labware') {
 						sendMessage('com.opentrons.labware_handshake',labware_id,session_id,'handshake','labware','shake','');
-						if (driver_id == "") sendMessage('com.opentrons.driver_handshake',driver_id,session_id,'handshake','driver','extend','');
+						if (handshake_flow.driver == false) sendMessage('com.opentrons.driver_handshake',driver_id,session_id,'handshake','driver','extend','');
 						//sendMessage('com.opentrons.labware_handshake',labware_id,session_id,'handshake','labware','extend','');
-						if (bootstrapper_id == "") sendMessage('com.opentrons.bootstrapper_handshake',bootstrapper_id,session_id,'handshake','bootstrapper','extend','');
+						if (handshake_flow.bootstrapper == false) sendMessage('com.opentrons.bootstrapper_handshake',bootstrapper_id,session_id,'handshake','bootstrapper','extend','');
+						handshake_flow.labware == false;
 					}
 					if (name == 'bootstrapper') {
 						sendMessage('com.opentrons.bootstrapper_handshake',bootstrapper_id,session_id,'handshake','bootstrapper','shake','');
-						if (driver_id == "") sendMessage('com.opentrons.driver_handshake',driver_id,session_id,'handshake','driver','extend','');
-						if (labware_id == "") sendMessage('com.opentrons.labware_handshake',labware_id,session_id,'handshake','labware','extend','');
+						if (handshake_flow.driver == false) sendMessage('com.opentrons.driver_handshake',driver_id,session_id,'handshake','driver','extend','');
+						if (handshake_flow.labware == false) sendMessage('com.opentrons.labware_handshake',labware_id,session_id,'handshake','labware','extend','');
 						//sendMessage('com.opentrons.bootstrapper_handshake',bootstrapper_id,session_id,'handshake','bootstrapper','extend','');
+						handshake_flow.bootstrapper == false;
 					}
 					
 				}
