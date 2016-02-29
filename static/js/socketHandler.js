@@ -18,7 +18,7 @@ var socketHandler = {
 					name = data.data.name;
 					if (name == 'driver') {
 						driver_id = data.from;
-						setCookie('data_id',driver_id,21);
+						setCookie('driver_id',driver_id,21);
 					}
 					if (name == 'labware') {
 						labware_id = data.from;
