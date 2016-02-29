@@ -155,6 +155,9 @@ window.addEventListener ('load', function() {
 	connection1.open();
 });
 
+window.addEventListener ('unload', function() {
+	globalConnection1.close();
+});
 
 /* Send messages function */
 
