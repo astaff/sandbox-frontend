@@ -11,9 +11,9 @@ def index():
 	return render_template("sandbox.html")
 
 
-@app.route("/wizard")
+@app.route("/deck")
 def sandbox():
-	return render_template("wizard-test.html")
+	return render_template("deck.html")
 
 @app.route("/data")
 def data():

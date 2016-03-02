@@ -12,8 +12,8 @@
 <div class="deck">
     <aside class="step-list">
         <ul id="step-group">
-            <li class="welcome">Welcome</li>
-            <li class="one">Step 1- Calibrate p200 tiprack</li>
+            <li class="welcome"><a href="#welcome/hello">Welcome</a></li>
+            <li><a href="#file/finfo">Step 1- Calibrate p200 tiprack</a></li>
             <li class="two">Echo steps from Michelle</li>
             <li class="three">Echo steps from Michelle</li>
         </ul>
@@ -29,9 +29,9 @@
                 <div class="step step-hello">
                     <p>This wizard will guide you step by step through the process of:
                         <ul>
-                            <li>Loading a Protocol</li>
-                            <li>Calibrating Well Positions</li>
-                            <li>Calibrating Pipettes</li>
+                            <li><a href="#file/finfo">Loading a Protocol</a></li>
+                            <li><a href="#calibrate/cinfo">Calibrating Well Positions</a></li>
+                            <li><a href="#pipette/pinfo">Calibrating Pipettes</a></li>
                             <li>Testing Saved Positions</li>
                         </ul>
                     </p>
@@ -68,7 +68,7 @@
         <script id="calibrateTask-template" type="text/x-handlebars-template">
             <h2>Calibrate to Well A:1 ith Left Pipette</h2>
             <div class="steps">
-                <div class="step step-info">
+                <div class="step step-cinfo">
                     <p>The first position you save should be your tip rack. Select that position then jog your robot so that the pipette is hovering directly over the A1 tip of the rack that it will use for the run.</p>
                     <p>When you think the pipette is well positioned directly above the tip, flip to the "Pipette" section of the interface, select the correct pipette, and hit "pick up tip." The machine will go up and down three times in an attempt to pick up the tip.</p>
                     <p>NOTE: the distance the machine moves down the Z axis to pick up the tip is defined in the "tip plunge" field in the Pipette definition in the Head section of the JSON OT protocol document.</p>
@@ -167,39 +167,7 @@
         window.onhashchange = locationHashChanged;
         </script>
         <script>
-        window.addEventListener('DOMConentLoaded', function() {
-            document.getElementById('loadFile').addEventListener('click', function(evt) {
-                readBlob();
-            }, false);
-        });
 
-
-        function readBlob() {
-
-            var files = document.getElementById('files').files;
-            if (!files.length) {
-                alert('Please select a file!');
-                return;
-            }
-
-            var file = files[0];
-            var start = 0;
-            var stop = file.size - 1;
-
-            var reader = new FileReader();
-
-            reader.onloadend = function(evt) {
-                if (evt.target.readyState == FileReader.DONE) {
-                    document.getElementById('byte_content').textContent = evt.target.result;
-                    var upload = evt.target.result;
-                    var protocol = JSON.parse(upload);
-                    console.log(protocol);
-                }
-            };
-
-            var blob = file;
-            reader.readAsBinaryString(blob);
-        }
         </script>
     </div>
     {% endblock %} {% block scripts %} {% endblock %}
