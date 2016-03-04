@@ -56,9 +56,9 @@ var socketHandler = {
 						}
 					});
 					if (name == 'driver') {
-						sendMessage('com.opentrons.driver_handshake',driver_id,session_id,'handshake','driver','shake','');
+						sendMessage('com.opentrons.bootstrapper_handshake',driver_id,session_id,'handshake','driver','shake','');
 						if (handshake_flow.labware == false) sendMessage('com.opentrons.labware_handshake',labware_id,session_id,'handshake','labware','extend','');
-						if (handshake_flow.bootstrapper == false) sendMessage('com.opentrons.bootstrapper_handshake',labware_id,session_id,'handshake','bootstrapper','extend','');
+						if (handshake_flow.driver == false) sendMessage('com.opentrons.driver_',labware_id,session_id,'handshake','bootstrapper','extend','');
 					}
 					if (name == 'labware') {
 						sendMessage('com.opentrons.labware_handshake',labware_id,session_id,'handshake','labware','shake','');
