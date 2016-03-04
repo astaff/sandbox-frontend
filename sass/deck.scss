@@ -55,13 +55,13 @@
 .deck {
     @include grid-row();
     .jog,
-    .deckmap,
     .steps {
         background-color: $bg-div;
         //border-radius: $basesize;
         height: 100%;
     }
-    .jog, .steps {
+    .jog,
+    .steps {
         color: $primary-blue;
         h4 {
             margin: $basesize;
@@ -105,6 +105,19 @@
         hr {
             border-color: lighten($primary-blue, 40%);
         }
+        ////////////////////////////////////////////
+        // Deck Slot Buttons
+        ////////////////////////////////////////////
+        .deckbtns {
+            text-align: center;
+            .btn {
+                line-height: $baseline*2;
+                padding: $basesize $basesize*0.5;
+            }
+        }
+        //////////////////////////////////////
+        //PIPETTE BUTTONS
+        //////////////////////////////////////
         .btn-group {
             text-align: center;
             font-size: $basesize;
@@ -116,9 +129,6 @@
                 padding: $basesize*0.5;
                 margin: -1px;
             }
-            //////////////////////////////////////
-            //PIPETTE BUTTONS
-            //////////////////////////////////////
             .btn-pipette {
                 background-color: $button-green;
                 border-radius: $basesize/2;
@@ -154,11 +164,47 @@
             }
         }
     }
+    /////////////////////////////////////
+    //SANDBOX 
+    /////////////////////////////////////
     .deckmap {
         @include grid-col(9);
         float: right;
+        height:100%;
+
         section {
             @include grid-row();
+            table {
+                width: 100%;
+                text-align: center;
+                border-collapse: collapse;
+                th {
+                    font-size: $basesize;
+                    height: $baseline*2;
+                }
+                tbody {
+                    //border: 1px solid $primary-pink;
+                }
+                tr {
+                    border-bottom: 1px solid $primary-pink;
+                    height: $baseline*2;
+                }
+                td{
+                    width:10%;
+                }
+                td:first-child {
+                    width: 20%;
+                    text-align: left;
+                    padding-left: $basesize;
+                }
+                tr:hover,
+                tr:active {
+                    background-color: lighten($primary-blue, 50%);
+                }
+            }
+            ////////////////////////////////////////
+            //SANDBOX SPECIFIC
+            ////////////////////////////////////////
             .deckbtns {
                 @include grid-col(4);
                 .btn {
@@ -227,30 +273,6 @@
                 a {
                     color: white;
                 }
-            }
-        }
-        table {
-            width: 100%;
-            text-align: center;
-            border-collapse: collapse;
-            th {
-                font-size: $basesize*2;
-                height: $baseline*4;
-            }
-            tbody{
-                border: 1px solid $primary-pink;
-            }
-            tr {
-                border-bottom: 1px solid $primary-pink;
-                height: $baseline*2;
-            }
-            td:first-child {
-                width: 20%;
-                text-align: left;
-                padding-left:$basesize;
-            }
-            tr:hover, tr:active{
-                background-color: lighten($primary-blue, 50%);
             }
         }
     }
