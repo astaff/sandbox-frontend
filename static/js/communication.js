@@ -89,8 +89,8 @@ window.addEventListener ('load', function() {
 
 		//connection1.session.publish('com.opentrons.driver_handshake', [true]);
 		if (session_id=="") {
-			handshake_flow.driver = true;
-			sendMessage('com.opentrons.driver_handshake',driver_id,session_id,'handshake','driver','extend','');
+			handshake_flow.bootstrapper = true;
+			sendMessage('com.opentrons.bootstrapper_handshake',driver_id,session_id,'handshake','driver','extend','');
 		} else {
 			handshake_flow.driver = true;
 			handshake_flow.labware = true;
@@ -172,6 +172,7 @@ function sendMessage (topic,to,sessionID,type,name,message,param) {
 		console.log('\tname: ',name);
 		console.log('\tmessage: ',message);
 		console.log('\tparam: ',param);
+
 		var msg = {
 			'to':to,
 			'from':session_id,
@@ -184,6 +185,8 @@ function sendMessage (topic,to,sessionID,type,name,message,param) {
 		dat['message'] = mp;
 		msg['data'] = dat;
 		console.log('sending a message on ',topic,':\n'+JSON.stringify(msg));
+		d = new Date();
+		msg['time'] = d.getFullYear()+'-'+d.getMonth()+'-'+d.getDay()+' '+d.getHours()+':'+d.getMinutes()+':'+d.getSeconds()+'.'+d.getMilliseconds();
 		globalConnection1.session.publish(topic, [JSON.stringify(msg)]);
 	} catch(e) {
 		console.log('error sending message');
