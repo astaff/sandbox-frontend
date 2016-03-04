@@ -184,9 +184,9 @@ function sendMessage (topic,to,sessionID,type,name,message,param) {
 		mp[message] = param;
 		dat['message'] = mp;
 		msg['data'] = dat;
-		console.log('sending a message on ',topic,':\n'+JSON.stringify(msg));
 		d = new Date();
 		msg['time'] = d.getFullYear()+'-'+d.getMonth()+'-'+d.getDay()+' '+d.getHours()+':'+d.getMinutes()+':'+d.getSeconds()+'.'+d.getMilliseconds();
+		console.log('sending a message on ',topic,':\n'+JSON.stringify(msg));
 		globalConnection1.session.publish(topic, [JSON.stringify(msg)]);
 	} catch(e) {
 		console.log('error sending message');
