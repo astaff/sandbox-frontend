@@ -64,11 +64,11 @@ nav ul {
         &:hover {
             text-shadow: 1px 1px 4px #333;
         }
-        
     }
 }
 
-a.btn, .btn {
+a.btn,
+.btn {
     color: #FFF;
     text-decoration: none;
     border: none;
@@ -88,8 +88,6 @@ a.btn, .btn {
     }
 }
 
-
-
 a.btn-tab {
     color: $primary-blue;
     text-decoration: none;
@@ -108,7 +106,6 @@ a.btn-tab {
 }
 
 .btn-group {
-    
     .btn-p {
         background-color: $button-green;
         border-radius: $basesize/2;
@@ -131,4 +128,27 @@ a.btn-tab {
         border-radius: 0 $basesize $basesize 0;
     }
 }
+
+
+/*********************
+Upload Button
+********************/
+
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+}
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: $basesize;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
 

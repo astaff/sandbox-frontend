@@ -4,22 +4,6 @@
     line-height: $baseline*1.5;
     vertical-align: middle;
     margin-bottom: 0;
-    /***********************
-    STYLE FOR SELCT OPTION - REMOVED FOR NOW
-    aside {
-        @include grid-col(3);
-        select {
-            text-align: center;
-            font-size: $basesize;
-            background-color: lighten($primary-blue, 15%);
-            border: none;
-            height: $baseline*1.5;
-            border-radius: $basesize;
-            color: white;
-            width: 100%
-        }
-    }
-    ************************/
     .btn-group {
         @include grid-col(3);
         .btn-p {
@@ -170,10 +154,13 @@
     .deckmap {
         @include grid-col(9);
         float: right;
-        height:100%;
-
+        height: 100%;
         section {
             @include grid-row();
+            
+            /*********************
+            CONTAINER TABLE
+            ********************/
             table {
                 width: 100%;
                 text-align: center;
@@ -182,15 +169,13 @@
                     font-size: $basesize;
                     height: $baseline*2;
                 }
-                tbody {
-                    //border: 1px solid $primary-pink;
-                }
+                
                 tr {
                     border-bottom: 1px solid $primary-pink;
                     height: $baseline*2;
                 }
-                td{
-                    width:10%;
+                td {
+                    width: 10%;
                 }
                 td:first-child {
                     width: 20%;

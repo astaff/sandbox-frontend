@@ -1,21 +1,14 @@
 {% extends "/layout.html" %} {% block styles %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/walkthrough.css') }}"> {% endblock %} {% block body %}
 <style type="text/css">
-.steps .step {
-    display: none;
-}
-
-.steps .step.active-step {
-    display: block;
-}
 </style>
 <div class="deck">
     <aside class="step-list">
         <ul id="step-group">
-            <li class="welcome"><a href="#welcome/hello">Welcome</a></li>
-            <li><a href="#file/finfo">Step 1- Calibrate p200 tiprack</a></li>
-            <li class="two">Echo steps from Michelle</li>
-            <li class="three">Echo steps from Michelle</li>
+            <li><a href="#welcome/upload">Support</a></li>
+            <li><a href="#file/finfo">Upload Protocol Wizard</a></li>
+            <li><a href="#">Calibrate Container Wizard</a></li>
+            <li><a href="#">Echo steps from Michelle</a></li>
         </ul>
     </aside>
     {% raw %}
@@ -24,44 +17,133 @@
             Loading...
         </div>
         <script id="welcomeTask-template" type="text/x-handlebars-template">
-            <h2>Welcome to the OT-One Calibration Wizard</h2>
             <div class="steps">
-                <div class="step step-hello">
-                    <p>This wizard will guide you step by step through the process of:
-                        <ul>
-                            <li><a href="#file/finfo">Loading a Protocol</a></li>
-                            <li><a href="#calibrate/cinfo">Calibrating Well Positions</a></li>
-                            <li><a href="#pipette/pinfo">Calibrating Pipettes</a></li>
-                            <li>Testing Saved Positions</li>
+                <div class="step step-upload">
+                    <div class="task">
+                        <h2>Welcome to the OT-One Calibration Interface</h2>
+                        <p>
+                            <p>OpenTrons jobs are described in JSON files that the robot reads as instruction set. You download these files from Mix.Bio. You can choose a pre-made JSON document from the Protocol Database that is ready to run, or customize your own in the Protocol Editor. Once you have the protocol you want downloaded, click below to upload to the Setup / Run interface.</p>
+                        </p>
+                        <input id="uploadFile" placeholder="Choose a File" disabled="disabled" />
+                        <br>
+                        <div class="fileUpload btn" id="upLoad" style="display:inline-block;">
+                            <span>Upload</span>
+                            <input type="file" name="file" id="files" class="upload" />
+                        </div>
+                        <div id="validate" class="not-active">
+                            <p>Your protocol contains no syntax errors. Click to test for processing errors before </p>
+                            <br>
+                            <a role="button" class="btn not-active" id="loadFile" onclick="readBlob();" style="color:white; text-align:center;">Validate</a>
+                        </div>
+                        <div id="byte_content"></div>
+                        <!-- <a class="prev fa fa-chevron-left" href="#welcome/docs"></a>
+                    <a class="next fa fa-chevron-right" href="#welcome/validate"></a> -->
+                        <ul class="subnav">
+                            <li></li>
+                            <li></li>
+                            <li><a href="#container/existing" class="btn"> Next <i class="fa fa-chevron-right fa-2x"></i></a></li>
                         </ul>
-                    </p>
-                    <p>You can always acess this screen menu at any time by clicking the main menu button at the top of the task menu.</p>
-                    <a href="#welcome/docs">Next</a>
-                </div>
-                <div class="step step-docs">
-                    <h3>If you prefer, online documentation can be found <a href="https://github.com/OpenTrons/otone_docs" target="_blank">here.</a> </h3>
-                    <p>Each task has a navigation bar at the bottom of the screen. Here you can view tips and instructions, perform the current task, or test your saved values. </p>
-                    <!-- Link to Info/Jog/Test based on current data -->
-                    <ul class="subnav">
-                        <li><a class="btn"><i class="fa fa-info-circle fa-lg"></i> Tips</a></li>
-                        <li><a class="btn"><i class="fa fa-arrows fa-lg"></i> Jog</a></li>
-                        <li><a class="btn"><i class="fa fa-refresh fa-lg"></i> Test</a></li>
-                    </ul>
-                    <a href="#welcome/hello">Prev</a> |
-                    <a href="#file/finfo">Next</a>
+                    </div>
+                    <div class="info">
+                        <h2>Tip:</h2>
+                        <p>Error tips and links here?</p>
+                    </div>
                 </div>
             </div>
         </script>
-        <script id="fileTask-template" type="text/x-handlebars-template">
-            <h2>Upload a Protocol File </h2>
+        <script id="containerTask-template" type="text/x-handlebars-template">
+            <h2></h2>
             <div class="steps">
-                <div class="step step-finfo">
-                    <p>bar: {{bar}}; step: {{step}}</p>
-                    <p>OpenTrons jobs are described in JSON files that the robot reads as instruction set. You download these files from Mix.Bio. You can choose a pre-made JSON document from the Protocol Database that is ready to run, or customize your own in the Protocol Editor. Once you have the protocol you want downloaded, click below to upload to the Setup / Run interface.</p>
-                    <h3>Load Protocol</h3>
-                    <input type="file" name="file" id="files" class="inputfile" />
-                    <button class="btn" id="loadFile" onclick="readBlob();">Load</button>
-                    <div id="byte_content"></div>
+                <div class="step step-existing">
+                    <div class="task">
+                        <h2>Use Previously Saved Positions?</h2>
+                        <p>Some containers have saved positions, please select any previously calibrated positions you would like to retain.
+                        </p>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <th class="delete"></th>
+                                    <th>Container</th>
+                                    <th>X:</th>
+                                    <th>Y:</th>
+                                    <th>Z:</th>
+                                    <th>Slot</th>
+                                </tr>
+
+                                {{#each data.prevlabware}}
+                                <tr>
+                                    <td class="delete">
+                                        <input type="checkbox" name="container" id={{@index}}/>
+                                        <label>reuse</label></td>
+                                        <td>{{this.name}}</td>
+                                        <td>{{this.x}}</td>
+                                        <td>{{this.y}}</td>
+                                        <td>{{this.z}}</td>
+                                        <td> </td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+
+                        <button class="btn continue" onclick="savePrev();">Save and Continue</button>
+                        <ul class="subnav">
+                            <li><a href="#welcome/upload" class="btn"><i class="fa fa-chevron-left fa-2x"></i>Prev</a></li>
+                            <li></li>
+                            <li><a href="#calibrate/tiprackL" class="btn"> Next<i class="fa fa-chevron-right fa-2x"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="info">
+                        <h2>Tip:</h2>
+                        <p>Error tips and links here?</p>
+                    </div>
+                </div>
+
+
+                <div class="step step-compare">
+                    <div class="task">
+                    
+                        <h2>Positions Saved</h2>
+                        <p>The following container positions have been applied to your current protocol. You may test or overwrite them at any time.</p>
+                        {{#if data.savedlabware}}
+                        <table>
+                            <tbody>
+                                <tr>
+               
+                                    <th>Container</th>
+                                    <th>X:</th>
+                                    <th>Y:</th>
+                                    <th>Z:</th>
+                                    <th>Slot</th>
+                                </tr>
+                                 
+                                {{#each data.savedlabware}}
+                                <tr>
+                                    
+                                       
+                                        <td>{{this.name}}</td>
+                                        <td>{{this.x}}</td>
+                                        <td>{{this.y}}</td>
+                                        <td>{{this.z}}</td>
+                                        <td></td>
+                                </tr>
+                                {{/each}}
+
+                            </tbody>
+                        </table>
+                        {{/if}}
+                        <br>
+                        <button class="btn" onclick="">Continue</button>
+
+                        <ul class="subnav">
+                            <li><a href="#container/existing" class="btn"><i class="fa fa-chevron-left fa-2x"></i>Prev</a></li>
+                            <li></li>
+                            <li><a href="#calibrate/tipRackL" class="btn"> Continue<i class="fa fa-chevron-right fa-2x"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="info">
+                        <h2>Tip:</h2>
+                        <p>Error tips and links here?</p>
+                    </div>
                 </div>
             </div>
         </script>
@@ -92,7 +174,7 @@
                                 <td><a href="#" class="btn btn-z"><i class="fa fa-arrow-up fa-lg"></i></a></td>
                             </tr>
                             <tr>
-                                <td class="pull-right"> <a href="#" class="btn "><i class="fa fa-arrow-left fa-lg"></i></a></td>
+                                <td class="pull-right"> <a href="#"><i class="fa fa-arrow-left fa-lg "></i></a></td>
                                 <td>&nbsp;</td>
                                 <td class="pull-left"><a href="#" class="btn "><i class="fa fa-arrow-right fa-lg"></i></a></td>
                                 <td class="spacer"></td>
@@ -100,7 +182,7 @@
                             </tr>
                             <tr>
                                 <td></td>
-                                <td><a href="#" class="btn"><i class="fa fa-arrow-down fa-lg"></i></a></td>
+                                <td><a href="#"><i class="fa fa-arrow-down fa-lg"></i></a></td>
                                 <td>&nbsp;</td>
                                 <td class="spacer"></td>
                                 <td><a href="#" class="btn btn-z"><i class="fa fa-arrow-down fa-lg"></i></a></td>
@@ -140,34 +222,159 @@
         </script>
         {% endraw %}
         <script type="text/javascript">
+        var fakedata = {
+            prevlabware: [{
+                name: "p200-rack",
+                x: 23,
+                y: 10,
+                z: 65
+            }, {
+                name: "trough",
+                x: 25,
+                y: 34,
+                z: 67
+            }, {
+                name: "standard",
+                x: 27,
+                y: 40,
+                z: 85
+            }, {
+                name: "trash",
+                x: 23,
+                y: 50,
+                z: 90
+            }, {
+                name: "source-1",
+                x: 22,
+                y: 45,
+                z: 100
+            }, {
+                name: "output-1",
+                x: 34,
+                y: 34,
+                z: 88
+            }],
+            labware: [{
+                name: "p200-rack",
+                x: 0,
+                y: 0,
+                z: 0
+            }, {
+                name: "trough",
+                x: 0,
+                y: 0,
+                z: 0
+            }, {
+                name: "standard",
+                x: 0,
+                y: 0,
+                z: 0
+            }, {
+                name: "trash",
+                x: 0,
+                y: 0,
+                z: 0
+            }, {
+                name: "source-1",
+                x: 0,
+                y: 0,
+                z: 0
+            }, {
+                name: "output-1",
+                x: 0,
+                y: 0,
+                z: 0
+            }],
+            savedlabware:[]
+        };
+
         var task = new TaskController().setTask('welcome', {
-            step: 'hello',
-            foo: 'FOO'
+            step: 'upload',
+            data: fakedata
         });
 
-        task.setStep('hello');
+        task.setStep('upload');
 
+        var currentStep = 'upload';
 
         function locationHashChanged() {
             var url = location.hash;
+
             if (new RegExp('#').test(url)) {
                 url = url.replace('#', '');
                 var paths = url.split('/');
                 var t = paths[0];
                 var s = paths[1];
-                console.log(s);
+
                 task.setTask(t, {
-                    step: s
+                    step: s,
+                    data: fakedata
                 });
                 task.setStep(s);
+                currentStep = s;
             }
-
+            checkStep();
         }
 
         window.onhashchange = locationHashChanged;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            //upload protocol and send to validate
+            locationHashChanged();
+
+        }, false);
+
+        function savePrev(){
+            var lw = document.querySelectorAll('input[name=container]');
+            for (var i = 0; i < lw.length; i++) {
+                if (lw[i].checked){
+                    fakedata.savedlabware.push(fakedata.prevlabware[i]);
+                }
+            }
+            window.location.hash = "container/compare"
+        }
+
+        function checkStep() {
+            console.log(currentStep);
+            switch (currentStep) {
+                case 'upload':
+                    document.getElementById("files").onchange = function() {
+
+                        var path = this.value.replace("C:\\fakepath\\", "");
+                        document.getElementById("uploadFile").value = path;
+                        task.setTask("container", {
+                            step: "existing",
+                            data: fakedata
+                        });
+                        task.setStep("existing");
+                    };
+                    break;
+
+                case 'existing':
+                    var lw = document.querySelectorAll('input[name=container]');
+
+                    for (var i = 0; i < lw.length; i++) {
+                        lw[i].addEventListener('change', function(e) {
+                            var row = e.target.parentNode.parentNode;
+                            if (e.target.checked) {
+                                row.classList.add('saved');
+                           }else{
+                                row.classList.remove('saved');
+                           }
+                        });
+                    }
+                case 'compare':
+                        //will add in when we have compare funcitonality                    
+                    break;
+
+                default:
+
+                    break;
+
+            }
+        }
         </script>
         <script>
-
         </script>
     </div>
     {% endblock %} {% block scripts %} {% endblock %}

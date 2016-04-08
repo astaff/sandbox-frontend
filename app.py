@@ -19,15 +19,6 @@ def sandbox():
 def data():
 	return render_template("data.html")
 
-@app.route("/calibrate")
-def calibrate():
-	return render_template("calibrate.html")
-
-@app.route('/hello')
-def hello_world():
-    print('whatup backend?')
-    return 'hello'
-
 
 @app.errorhandler(404)
 def page_not_found(error):

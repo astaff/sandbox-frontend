@@ -45,6 +45,10 @@ Task.prototype = {
         } else {
             throw("Step for task "+this.taskName+" not found ("+stepName+")");
         }
+    },
+
+    getStep: function(){
+        return this.step;
     }
 
 };

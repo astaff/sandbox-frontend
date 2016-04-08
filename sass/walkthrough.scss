@@ -2,7 +2,7 @@
 .deck {
     @include grid-row();
     .step-list {
-        @include grid-col(3);
+        @include grid-col(2);
         background-color: $bg-div;
         //border-radius: $basesize;
         height: 100%;
@@ -40,42 +40,72 @@
 }
 
 #wizard {
-    @include grid-col(6);
+    @include grid-col(10);
     min-height: 80vh;
     position: relative;
     a {
         color: $primary-pink;
     }
-    h2{
-
+    /*********************
+   STEP RENDERING
+    ********************/
+    .steps .step {
+        display: none;
+    }
+    .steps .step.active-step {
+        display: block;
+    }
+    .step {
+        overflow: visible;
+        text-align: center;
+        p {
+            text-align: left;
+        }
+    }
+    .task {
+        @include grid-col(8);
+    }
+    .info {
+        @include grid-col(4);
+        text-align: left;
+    }
+    /*********************
+    PREV NEXT BTNS
+    ********************/
+    .prev,
+    .next {
+        position: absolute;
+        top: 45%;
+    }
+    .prev {
+        left: 0;
+    }
+    .next {
+        right: 0;
     }
     /*********************
     SUBNAVIGATION
     ********************/
     .subnav {
-        @include grid-row();      
+        @include grid-col(8);
         list-style: none;
-        position:absolute; 
-        bottom:0;
+        position: absolute;
+        bottom: 0;
         text-align: center;
-            li {
-                position:relative;
-                display: inline-block;
-                @include grid-col(4);
-                
-                color: white;
-                line-height: $baseline;
-
-                a.btn {
-                    display: block;
-                    border-radius: 0;
-                    background-color: white;
-                    transition: background-color 1s;
-                    width:100%;
-
-                }
+        li {
+            position: relative;
+            display: inline-block;
+            @include grid-col(4);
+            color: white;
+            line-height: $baseline;
+            a.btn {
+                display: block;
+                border-radius: 0;
+                background-color: white;
+                transition: background-color 1s;
+                width: 100%;
             }
-
+        }
     }
     /*********************
     JOG CONTROLS
@@ -172,7 +202,64 @@
             }
         }
     }
-    .jog-info{
+    .jog-info {
         @include grid-col(6);
     }
+}
+
+input#uploadFile {
+    border: none;
+    text-align: center;
+    width: 100%;
+}
+
+.active {
+    display: block;
+    margin: 0 auto;
+    width: auto;
+}
+
+.not-active {
+    display: none;
+}
+
+#loadFile {
+    color: white;
+}
+
+table {
+    width:100%;
+    padding: none;
+    border: none;   
+    tr:nth-child(even) {
+        background: $bg-div;
+        .saved {
+            background: $bg-blue;
+            font-style: italic;
+            font-style: bold;
+        }
+    }
+    tr {
+        height: 1.5*$baseline;
+        line-height: 1.5*$baseline;
+    }
+    td {
+        @include grid-col(2);
+        text-align: center;
+    }
+    .delete {
+        text-align: right;
+    }
+}
+
+.saved {
+    background: $bg-blue !important;
+    font-style: italic;
+    font-style: bold;
+}
+
+.continue{
+    width:auto;
+    float:right;
+    margin-top:$baseline;
 }

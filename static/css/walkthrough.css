@@ -114,7 +114,7 @@ ol {
 }
 /* line 4, ../../sass/walkthrough.scss */
 .deck .step-list {
-  width: 22.91667%;
+  width: 14.58333%;
   float: left;
   padding-left: 1.04167%;
   padding-right: 1.04167%;
@@ -164,13 +164,19 @@ ol {
 
 /* line 42, ../../sass/walkthrough.scss */
 #wizard {
-  width: 47.91667%;
+  width: 81.25%;
   float: left;
   padding-left: 1.04167%;
   padding-right: 1.04167%;
   display: block;
   min-height: 80vh;
   position: relative;
+ /*********************
+STEP RENDERING
+ ********************/
+  /*********************
+  PREV NEXT BTNS
+  ********************/
   /*********************
   SUBNAVIGATION
   ********************/
@@ -182,20 +188,67 @@ ol {
 #wizard a {
   color: #990066;
 }
+/* line 52, ../../sass/walkthrough.scss */
+#wizard .steps .step {
+  display: none;
+}
 /* line 55, ../../sass/walkthrough.scss */
-#wizard .subnav {
+#wizard .steps .step.active-step {
   display: block;
-  overflow: hidden;
-  margin: auto;
-  width: 95%;
-  padding: 0% 2.5%;
-  margin-bottom: 22px;
+}
+/* line 58, ../../sass/walkthrough.scss */
+#wizard .step {
+  overflow: visible;
+  text-align: center;
+}
+/* line 61, ../../sass/walkthrough.scss */
+#wizard .step p {
+  text-align: left;
+}
+/* line 65, ../../sass/walkthrough.scss */
+#wizard .task {
+  width: 64.58333%;
+  float: left;
+  padding-left: 1.04167%;
+  padding-right: 1.04167%;
+  display: block;
+}
+/* line 68, ../../sass/walkthrough.scss */
+#wizard .info {
+  width: 31.25%;
+  float: left;
+  padding-left: 1.04167%;
+  padding-right: 1.04167%;
+  display: block;
+  text-align: left;
+}
+/* line 75, ../../sass/walkthrough.scss */
+#wizard .prev,
+#wizard .next {
+  position: absolute;
+  top: 45%;
+}
+/* line 80, ../../sass/walkthrough.scss */
+#wizard .prev {
+  left: 0;
+}
+/* line 83, ../../sass/walkthrough.scss */
+#wizard .next {
+  right: 0;
+}
+/* line 89, ../../sass/walkthrough.scss */
+#wizard .subnav {
+  width: 64.58333%;
+  float: left;
+  padding-left: 1.04167%;
+  padding-right: 1.04167%;
+  display: block;
   list-style: none;
   position: absolute;
   bottom: 0;
   text-align: center;
 }
-/* line 61, ../../sass/walkthrough.scss */
+/* line 95, ../../sass/walkthrough.scss */
 #wizard .subnav li {
   position: relative;
   display: inline-block;
@@ -207,7 +260,7 @@ ol {
   color: white;
   line-height: 22px;
 }
-/* line 69, ../../sass/walkthrough.scss */
+/* line 101, ../../sass/walkthrough.scss */
 #wizard .subnav li a.btn {
   display: block;
   border-radius: 0;
@@ -215,7 +268,7 @@ ol {
   transition: background-color 1s;
   width: 100%;
 }
-/* line 83, ../../sass/walkthrough.scss */
+/* line 113, ../../sass/walkthrough.scss */
 #wizard .jog {
   width: 47.91667%;
   float: left;
@@ -223,37 +276,37 @@ ol {
   padding-right: 1.04167%;
   display: block;
 }
-/* line 85, ../../sass/walkthrough.scss */
+/* line 115, ../../sass/walkthrough.scss */
 #wizard .jog table {
   width: 100%;
   display: block;
 }
-/* line 88, ../../sass/walkthrough.scss */
+/* line 118, ../../sass/walkthrough.scss */
 #wizard .jog table td {
   line-height: 38.5px;
 }
-/* line 90, ../../sass/walkthrough.scss */
+/* line 120, ../../sass/walkthrough.scss */
 #wizard .jog table td .spacer {
   width: 28px;
 }
-/* line 95, ../../sass/walkthrough.scss */
+/* line 125, ../../sass/walkthrough.scss */
 #wizard .jog a {
   color: white;
 }
-/* line 98, ../../sass/walkthrough.scss */
+/* line 128, ../../sass/walkthrough.scss */
 #wizard .jog .btn {
   padding: 10.5px;
   border-radius: 7px;
 }
-/* line 102, ../../sass/walkthrough.scss */
+/* line 132, ../../sass/walkthrough.scss */
 #wizard .jog .pull-right {
   transform: translateX(28px);
 }
-/* line 105, ../../sass/walkthrough.scss */
+/* line 135, ../../sass/walkthrough.scss */
 #wizard .jog .pull-left {
   transform: translateX(-28px);
 }
-/* line 108, ../../sass/walkthrough.scss */
+/* line 138, ../../sass/walkthrough.scss */
 #wizard .jog .btn-z {
   background-color: #298f93;
   border-radius: 7px;
@@ -261,35 +314,35 @@ ol {
   /* Safari */
   transition: background-color 0.1s;
 }
-/* line 115, ../../sass/walkthrough.scss */
+/* line 145, ../../sass/walkthrough.scss */
 #wizard .jog .btn-z:hover {
   background-color: #34b5bb;
 }
-/* line 118, ../../sass/walkthrough.scss */
+/* line 148, ../../sass/walkthrough.scss */
 #wizard .jog p {
   text-align: center;
   padding-top: 22px;
   font-size: 17.5px;
 }
-/* line 123, ../../sass/walkthrough.scss */
+/* line 153, ../../sass/walkthrough.scss */
 #wizard .jog hr {
   border-color: #8a96c8;
 }
-/* line 126, ../../sass/walkthrough.scss */
+/* line 156, ../../sass/walkthrough.scss */
 #wizard .jog .btn-group {
   text-align: center;
   font-size: 14px;
   line-height: 33px;
   margin: 11px 0;
 }
-/* line 131, ../../sass/walkthrough.scss */
+/* line 161, ../../sass/walkthrough.scss */
 #wizard .jog .btn-group .btn-inc {
   line-height: 22px;
   border-radius: 0;
   padding: 7px;
   margin: -1px;
 }
-/* line 140, ../../sass/walkthrough.scss */
+/* line 170, ../../sass/walkthrough.scss */
 #wizard .jog .btn-group .btn-pipette {
   background-color: #298f93;
   border-radius: 7px;
@@ -299,42 +352,115 @@ ol {
   height: 33px;
   padding: 7px;
 }
-/* line 148, ../../sass/walkthrough.scss */
+/* line 178, ../../sass/walkthrough.scss */
 #wizard .jog .btn-group .btn-pipette:hover {
   background-color: #34b5bb;
 }
-/* line 151, ../../sass/walkthrough.scss */
+/* line 181, ../../sass/walkthrough.scss */
 #wizard .jog .btn-group .btn-pipette:active {
   background-color: #1e686b;
 }
-/* line 155, ../../sass/walkthrough.scss */
+/* line 185, ../../sass/walkthrough.scss */
 #wizard .jog .btn-group :first-child {
   border-radius: 14px 0 0 14px;
 }
-/* line 158, ../../sass/walkthrough.scss */
+/* line 188, ../../sass/walkthrough.scss */
 #wizard .jog .btn-group :last-child {
   border-radius: 0 14px 14px 0;
 }
-/* line 162, ../../sass/walkthrough.scss */
+/* line 192, ../../sass/walkthrough.scss */
 #wizard .jog .jog-pipette {
   text-align: center;
 }
-/* line 164, ../../sass/walkthrough.scss */
+/* line 194, ../../sass/walkthrough.scss */
 #wizard .jog .jog-pipette .left-pipette,
 #wizard .jog .jog-pipette .right-pipette {
   width: 40%;
   display: inline-block;
   line-height: 44px;
 }
-/* line 170, ../../sass/walkthrough.scss */
+/* line 200, ../../sass/walkthrough.scss */
 #wizard .jog .jog-pipette h4 {
   text-align: left;
 }
-/* line 175, ../../sass/walkthrough.scss */
+/* line 205, ../../sass/walkthrough.scss */
 #wizard .jog-info {
   width: 47.91667%;
   float: left;
   padding-left: 1.04167%;
   padding-right: 1.04167%;
   display: block;
+}
+
+/* line 210, ../../sass/walkthrough.scss */
+input#uploadFile {
+  border: none;
+  text-align: center;
+  width: 100%;
+}
+
+/* line 216, ../../sass/walkthrough.scss */
+.active {
+  display: block;
+  margin: 0 auto;
+  width: auto;
+}
+
+/* line 222, ../../sass/walkthrough.scss */
+.not-active {
+  display: none;
+}
+
+/* line 226, ../../sass/walkthrough.scss */
+#loadFile {
+  color: white;
+}
+
+/* line 230, ../../sass/walkthrough.scss */
+table {
+  width: 100%;
+  padding: none;
+  border: none;
+}
+/* line 234, ../../sass/walkthrough.scss */
+table tr:nth-child(even) {
+  background: #f2f3f9;
+}
+/* line 236, ../../sass/walkthrough.scss */
+table tr:nth-child(even) .saved {
+  background: #cfd4e9;
+  font-style: italic;
+  font-style: bold;
+}
+/* line 242, ../../sass/walkthrough.scss */
+table tr {
+  height: 33px;
+  line-height: 33px;
+}
+/* line 246, ../../sass/walkthrough.scss */
+table td {
+  width: 14.58333%;
+  float: left;
+  padding-left: 1.04167%;
+  padding-right: 1.04167%;
+  display: block;
+  text-align: center;
+}
+/* line 250, ../../sass/walkthrough.scss */
+table .delete {
+  text-align: right;
+}
+
+/* line 255, ../../sass/walkthrough.scss */
+.saved {
+  background: #cfd4e9 !important;
+  font-style: italic;
+  font-style: bold;
+}
+
+/* line 261, ../../sass/walkthrough.scss */
+.continue {
+  width: auto;
+  float: right;
+  margin-top: 22px;
 }
