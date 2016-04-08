@@ -20,6 +20,8 @@ RUN apk update && apk add \
 
 WORKDIR /home/sandbox-frontend
 
+RUN copy requirements.txt requirements.txt
+
 RUN pip3 install -r requirements.txt
 
 RUN rm -rf /var/cache/apk/*
