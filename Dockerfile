@@ -26,4 +26,5 @@ RUN pip3 install -r requirements.txt
 
 RUN rm -rf /var/cache/apk/*
 
-ENTRYPOINT ["tar", "-cvz", "/usr/lib/python3.5/site-packages/", "/home/sandbox-frontend"]
+#ENTRYPOINT ["tar", "-cvz", "/usr/lib/python3.5/site-packages/", "/home/sandbox-frontend"]
+ENTRYPOINT ["python3", "/home/sandbox-frontend/app.py"]
