@@ -9,7 +9,7 @@
 
 FROM common-build
 
-COPY * /home/sandbox-frontend-master
+COPY * /home/sandbox-frontend-master/
 WORKDIR /home/sandbox-frontend-master
 RUN pip3 install -r requirements.txt \
     && rm -rf /var/cache/apk/*
